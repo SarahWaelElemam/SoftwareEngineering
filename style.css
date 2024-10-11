@@ -1,16 +1,22 @@
+/* Base styles for the body */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  display: flex; /* Make body a flex container */
+  flex-direction: column; /* Arrange items vertically */
+  min-height: 100vh; /* Ensure body takes full height of viewport */
 }
 
+/* Footer styles */
 footer {
   background-color: #f0f0f0;
   padding: 20px 40px;
   color: #000;
-  margin-top: 0;
+  margin-top: auto; /* Push footer to the bottom of the page */
 }
 
+/* Footer container to align elements */
 .footer-container {
   display: flex;
   justify-content: space-between;
@@ -19,19 +25,21 @@ footer {
   border-bottom: 1px solid #eaeaea;
 }
 
+/* Left section of the footer */
 .footer-left {
   display: flex;
   align-items: center;
   margin: 0 20%;
 }
 
+/* Footer logo styles */
 .footer-logo {
   font-size: 1.8rem;
   font-weight: bold;
   margin-right: 60px;
-  margin-bottom: 20%;
 }
 
+/* Footer links styles */
 .footer-links {
   list-style: none;
   padding: 0;
@@ -48,6 +56,7 @@ footer {
   color: #000;
 }
 
+/* Info section in the footer */
 .footer-info {
   display: flex;
   flex-direction: column;
@@ -70,6 +79,7 @@ footer {
   color: #000;
 }
 
+/* Help section in the footer */
 .footer-help {
   margin: 0 100px;
 }
@@ -79,15 +89,17 @@ footer {
   background-color: #f9f9f9;
   border: 1px solid #000;
   border-radius: 20px;
-  padding: 5px 10px;
+  padding: 10px 30px;
   text-decoration: none;
   color: #000;
   display: inline-block;
 }
+
 .footer-help a:hover {
   background-color: #ffcb10;
 }
 
+/* Bottom section of the footer */
 .footer-bottom {
   display: flex;
   justify-content: space-between;
@@ -95,6 +107,7 @@ footer {
   padding-top: 20px;
 }
 
+/* Social icons styling */
 .social-icons {
   display: flex;
 }
@@ -103,8 +116,8 @@ footer {
   margin-right: 15px;
   background-color: #ffcb10;
   border-radius: 50%;
-  margin: 10px;
   padding: 10px;
+  transition: background-color 0.3s; /* Smooth hover effect */
 }
 
 .social-icons img {
@@ -120,21 +133,8 @@ footer {
   color: #000;
   text-decoration: none;
 }
-.social-icons {
-  display: flex;
-}
 
-.social-icons a {
-  margin-right: 15px;
-  color: #000;
-  font-size: 30px;
-  transition: color 0.3s;
-}
-
-.social-icons a:hover {
-  color: #007bff;
-}
-
+/* Media queries for responsiveness */
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
