@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800');
+
+*{
+  margin:0;
+  padding:0;
+  margin-block-start:0;
+  margin-block-end:0;
+} 
+body{
+  font-family: 'Nunito Sans', sans-serif;
+}
+.filter{
+    padding: 2%;
+    margin-left: 4%;
+    margin-right: 4%;
+}
+.filter-box {
+    display: flex;
+    background-color: #fcba038f;
+    gap: 10px;
+    padding: 1%;
+    border-radius: 20px; /* Add this line for rounded corners */
+}
+
+
+.filter-box input {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    margin-left: 2rem;
+    border-color: white;
+}
+#filterbtn{
+    background-color: orange;
+    border-color: orange;
+    font-size: 1.5em;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+input[type="text"], input[type="button"] {
+    padding: 5px;
+}
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+}
+.calendar-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    z-index: 1001;
+}
+#calendar-header {
+    display: flex;
+    background-color: rgba(255, 166, 0, 0.429);
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-weight: 500;
+}
+#prevMonth,#nextMonth{
+    color: white;
+    background-color: rgba(255, 166, 0, 0.429);
+    border: none;
+    font-size: 1.5rem;
+    padding: 1%;
+}
+#calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    margin-top: 10px;
+    color: orange;
+}
+.calendar-day {
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+.calendar-day:hover {
+    background-color: #f0f0f0;
+}
+.calendar-weekday {
+    font-weight: bold;
+    text-align: center;
+}
+.past-date {
+    color: #ccc;
+    cursor: not-allowed;
+}
+.past-date:hover {
+    background-color: transparent;
+}
+#closeModal{
+    color: white;
+    background-color: orange;
+    padding: 0.7rem;
+    font-size: 1em;
+    border-radius: 2rem;
+    border-color: orange;
+    float: right;
+}
