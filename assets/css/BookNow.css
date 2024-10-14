@@ -14,7 +14,7 @@ body {
 .event-container {
   max-width: 1200px;
   margin: 20px auto;
-  background-color: #f8f8f8;
+
   border-radius: 12px;
   overflow: hidden;
 }
@@ -94,7 +94,26 @@ p.Time {
   border-radius: 40px; /* Add border-radius to individual details sections */
   /* Adjust width so both left and right can fit side by side */
 }
+.about-event {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fefefe;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
 
+.about-event h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.about-event p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
 /* Ticket Section Enhancements */
 .ticket-section {
   margin: 40px auto;
@@ -165,7 +184,121 @@ p.Time {
 .ticket-btn:hover {
   background-color: #ff7700;
 }
+.ticket-selection {
+  margin: 20px 0;
+  text-align: left;
+}
 
+.ticket-label {
+  font-size: 1.4rem; /* Changed to rem for responsiveness */
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.ticket-select {
+  width: 100%;
+  padding: 0.8rem 1.2rem; /* Adjusted padding for better mobile experience */
+  font-size: 1.4rem; /* Changed to rem for responsiveness */
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  background-color: #f8f8f8;
+  color: #333;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.ticket-select:focus {
+  border-color: #ff5500;
+}
+
+.ticket-select option {
+  font-size: 1.2rem; /* Changed to rem for responsiveness */
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Black background with opacity */
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto; /* Adjusted for smaller screens */
+  padding: 2rem; /* Adjusted padding for better spacing */
+  border-radius: 20px;
+  width: 90%; /* Use 90% width for small devices */
+  max-width: 600px; /* Set a maximum width for larger devices */
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+#ticketPrice {
+  font-size: 20px;
+}
+
+.close-btn {
+  color: #aaa;
+  float: right;
+  font-size: 1.8rem; /* Changed to rem for responsiveness */
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+  color: #000;
+}
+
+.confirm-btn {
+  background-color: #ff5500;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 2rem; /* Adjusted padding for better mobile experience */
+  font-size: 1.5rem; /* Changed to rem for responsiveness */
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.confirm-btn:hover {
+  background-color: #ff7700;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .modal-content {
+    margin: 10% auto; /* Adjust margin for medium screens */
+  }
+
+  .ticket-label,
+  .ticket-select,
+  .confirm-btn {
+    font-size: 1.2rem; /* Smaller font size for better readability */
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    margin: 15% auto; /* Adjust margin for small screens */
+  }
+
+  .ticket-label,
+  .ticket-select,
+  .confirm-btn {
+    font-size: 1rem; /* Smaller font size for smaller screens */
+  }
+
+  .close-btn {
+    font-size: 1.5rem; /* Smaller close button for better mobile experience */
+  }
+}
 /* Venue Section */
 .venue-section {
   margin: 40px auto;
