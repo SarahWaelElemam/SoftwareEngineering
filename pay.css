@@ -1,0 +1,200 @@
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #242333;
+  color: #fff;
+  align-items: center;  
+  height: 100vh;
+  font-family: "Lato", sans-serif;
+  box-sizing: border-box;
+}
+.checkout{
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; 
+    height: 120vh;
+}
+.selectTicket {
+  position: relative;
+  padding: 20px;
+  height: 110vh;
+    display: flex; /* Use flexbox for layout */
+    flex-direction: row; 
+}
+
+.info {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center align content vertically */
+    justify-content: flex-end; /* Center align content horizontally */
+    background-color: #444451; /* Optional: add a background color */
+    padding: 20px; /* Optional: add some padding */
+    border-radius: 5px;
+    
+}
+.container {
+
+  justify-content: center;
+  perspective: 1000px;
+  margin-bottom: 30px;
+  display: flex;
+  margin: 20px;
+}
+
+.seat {
+  background-color: #444451;
+  height: 26px;
+  width: 32px;
+  margin: 3px;
+  font-size: 50px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.seat:focus {
+  outline: none; /* Remove focus outline */
+}
+.seat.selected {
+  background-color: green;
+}
+
+.seat[data-tooltip]:hover::after {
+  content: attr(data-tooltip); /* Get the tooltip text from data-tooltip */
+  position: absolute;
+  top: -25px; /* Position above the seat */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  white-space: nowrap; /* Prevent text from wrapping */
+  z-index: 10; /* Ensure it appears above other elements */
+}
+#container1 {
+  display: block; /* Show this by default */
+}
+
+#container2 {
+  display: none; /* Hide this by default */
+}
+#container1 .seat:nth-of-type(4) {
+  margin-right: 35px;
+}
+
+#container1 .seat:nth-of-type(12) {
+  margin-right: 18px;
+}
+
+#container1 .seat:nth-last-of-type(4) {
+  margin-left: 35px;
+}
+
+.seat:not(.sold):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+#container1 .row:nth-of-type(6) {
+  margin-top: 50px;
+}
+
+.row {
+  display: flex;
+}
+
+.screen {
+  background-color: burlywood;
+  height: 100px;
+  width: 100%;
+  margin: 15px 0;
+  transform: rotateX(-48deg);
+  box-shadow: 0 3px 10px rgba(193, 137, 26, 0.7);
+  position: relative;
+  overflow: hidden;
+  border-radius: 50px;
+  border-color: #fff;
+  border-bottom: none;
+  margin-bottom: 60px;
+}
+
+.screen::after {
+  content: 'STAGE';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(48deg);
+  color: #333;
+  font-size: 32px;
+  font-weight: bold;
+  letter-spacing: 8px;
+  opacity: 0.7;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  font-family: "Lato", sans-serif;
+}
+
+.button-container {
+  position: absolute;
+  display: grid;
+  background-color: #444451;
+  bottom: 20px;
+  right: 20px;
+}
+
+.btn {
+  background-color: #444451;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: green;
+}
+
+button.active {
+  background-color: green;
+  color: #fff;
+}
+
+#container2 .seat {
+  justify-content: center;
+}
+
+
+.allrows {
+  margin-top: 100px;
+  position: relative;
+  padding: 40px;
+  border: 4px solid brown;
+  border-radius: 50%;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 90px;
+}
+
+#container2 .row:nth-child(n+4) .seat:nth-child(3) {
+  margin-right: 30px;
+}
+
+#container2 .row:nth-child(n+4) .seat:nth-child(18) {
+  margin-left: 30px;
+}
+
+#container2 .row:nth-of-type(4) {
+  margin-top: 20px;
+}
