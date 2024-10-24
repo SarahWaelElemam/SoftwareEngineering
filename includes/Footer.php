@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TixCarte</title>
-    <link rel="stylesheet" href="../assets/css/Footer.css" />
-    <script
-      src="https://kit.fontawesome.com/19a37f6564.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
-    
 
-    <footer>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TixCarte</title>
+  <link rel="stylesheet" href="../assets/css/Footer.css" />
+  <script src="https://kit.fontawesome.com/19a37f6564.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <div class="content"><footer>
       <div class="footer-container">
         <div class="footer-left">
           <h2 class="footer-logo">TixCarte</h2>
@@ -47,6 +46,10 @@
         </div>
         <p>&copy; TixCarte.com 2024 - <a href="#">Privacy Policy</a></p>
       </div>
-    </footer>
-  </body>
+    </footer></div>
+    
+  </div>
+
+</body>
+
 </html>
