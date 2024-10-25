@@ -95,37 +95,38 @@ header h1 {
 }
 
 /* Modal Styles */
-/* General Pop-Up Modal Styles */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6); /* Semi-transparent background */
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   opacity: 0;
-  visibility: hidden; /* Prevents interaction when not visible */
-  transition: opacity 0.5s ease, visibility 0.5s ease; /* Smooth transition */
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
 .modal-overlay.active {
-  opacity: 1; /* Makes it visible */
-  visibility: visible; /* Allows interaction */
+  opacity: 1;
+  visibility: visible;
 }
 
+/* Modal Content */
 .modal-content {
   position: relative;
-  background-color: white;
+  background-color: #fff;
   padding: 30px;
   border-radius: 15px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   max-width: 600px;
-  width: 90%; /* Adjusted to be responsive */
-  z-index: 1001;
+  width: 90%;
+  max-height: 80vh; /* Set max height to control overflow */
+  overflow-y: auto; /* Enable scrolling within modal */
 }
 
 .modal-content h2 {
@@ -182,6 +183,14 @@ header h1 {
   border-radius: 25px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+}
+
+/* Prevent scrolling on the background when modal is open */
+.no-scroll {
+  overflow: hidden;
 }
 
 .modal-content button:hover {
@@ -189,6 +198,50 @@ header h1 {
   transform: scale(1.05);
 }
 
+/* Scrollable Container for Long Content */
+.modal-content .scrollable-content {
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-right: 10px;
+  margin-right: -10px; /* Hide scrollbar gap */
+}
+
+/* Ticket Row Styling */
+.ticket-row {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  justify-content: space-between;
+}
+
+.ticket-type,
+.ticket-price {
+  width: 45%; /* Ensure inputs take appropriate width */
+  padding: 8px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.remove-ticket {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-self: flex-end; /* Keep it aligned to the right */
+}
+
+.remove-ticket:hover {
+  background-color: #c0392b;
+}
+
+#ticketPriceContainer button {
+  width: auto; /* Adjust the Add Ticket Type button size */
+  padding: 10px 20px;
+}
 /* Input error styling */
 .input-error {
   border: 1px solid #e74c3c; /* Red border for error */
@@ -263,7 +316,12 @@ header h1 {
 .common-table-style td:last-child {
   text-align: center;
 }
-
+.event-image,
+.venue-image {
+  width: 50px; /* Adjust size as needed */
+  height: 20px;
+  border-radius: 5px; /* Optional, for rounded corners */
+}
 /* Style for action icons (edit and delete) */
 .action-icons {
   text-align: center;
