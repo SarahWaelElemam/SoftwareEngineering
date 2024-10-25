@@ -11,36 +11,54 @@ body {
   height: 100vh;
   font-family: "Lato", sans-serif;
   box-sizing: border-box;
+  width: 100%;
 }
 .checkout{
-    display: flex; /* Use flexbox for layout */
+    display: flex; 
     flex-direction: row; 
     height: 120vh;
+    justify-content: space-between;
 }
 .selectTicket {
   position: relative;
   padding: 20px;
   height: 110vh;
-    display: flex; /* Use flexbox for layout */
+    display: flex; 
     flex-direction: row; 
+    
 }
 
 .info {
-    display: flex; /* Use flexbox for layout */
-    align-items: center; /* Center align content vertically */
-    justify-content: flex-end; /* Center align content horizontally */
-    background-color: #444451; /* Optional: add a background color */
-    padding: 20px; /* Optional: add some padding */
-    border-radius: 5px;
-    
-}
-.container {
 
-  justify-content: center;
-  perspective: 1000px;
-  margin-bottom: 30px;
   display: flex;
-  margin: 20px;
+  flex-direction: column; 
+  align-items: flex-start; 
+  justify-content: flex-start; 
+  background-color: #e9e9ea;
+  padding: 20px;
+  border-radius: 2rem;
+  margin: 3rem;
+  width: 22rem; 
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.info .details {
+  align-items: flex-start;
+  margin: 1rem;
+  display: flex; 
+  flex-direction: column; 
+  color: black;
+  font-family: 'Times New Roman', Times, serif;
+}
+.info .details .name{
+font-size: 1.75rem;
+}
+.info img {
+  margin-bottom: 1rem;
+  width: 20rem;
+  height: 12rem;
+  border-radius: 2rem;
+  box-shadow: 0 5px 10px rgb(46, 45, 45);
 }
 
 .seat {
@@ -58,7 +76,7 @@ body {
   outline: none; /* Remove focus outline */
 }
 .seat.selected {
-  background-color: green;
+  background-color: #f4c140;
 }
 
 .seat[data-tooltip]:hover::after {
@@ -67,8 +85,8 @@ body {
   top: -25px; /* Position above the seat */
   left: 50%;
   transform: translateX(-50%);
-  background-color: #333;
-  color: white;
+  background-color: #f4c140;
+  color: black;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 12px;
@@ -158,11 +176,11 @@ body {
 }
 
 .btn:hover {
-  background-color: green;
+  background-color: #f4c140;
 }
 
 button.active {
-  background-color: green;
+  background-color: #f4c140;
   color: #fff;
 }
 
@@ -197,4 +215,119 @@ button.active {
 
 #container2 .row:nth-of-type(4) {
   margin-top: 20px;
+}
+.stepper-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.containerr {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 40px;
+  max-width: 400px;
+  width: 100%;
+  padding: 32px;
+  border-radius: 16px;
+}
+
+.containerr .steps {
+  display: flex;
+  align-items: left;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.containerr .steps .circle-wrapper {
+  display: flex;
+  align-items: center; /* Ensures the text and circle are vertically aligned */
+  gap: 10px; /* Adds spacing between the circle and the text */
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.containerr .steps .circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  background-color: #fff;
+  border-radius: 50%;
+  color: #999;
+  font-size: 22px;
+  font-weight: 500;
+  border: 4px solid #e0e0e0;
+  transition: all 0.3s ease;
+  transition-delay: 0s;
+  position: relative;
+}
+
+.containerr .steps .circle.active {
+  border-color: #f4c140;
+  color: #f4c140;
+}
+
+.containerr .steps .progress-bar {
+  position: relative;
+  height: 60px;
+  width: 4px;
+  background-color: #e0e0e0;
+  margin-left: 1.5rem;
+}
+
+.containerr .steps .progress-bar .indicator {
+  position: absolute;
+  height: 0%;
+  width: 100%;
+  background-color: #f4c140;
+  transition: height 0.3s ease;
+}
+
+
+.containerr .buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.containerr .buttons button {
+  padding: 8px 16px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background-color: #f4c140;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(244, 199, 64, 0.2);
+}
+
+.containerr .buttons button:hover {
+  background-color: #f4c140;
+}
+
+.containerr .buttons button:active {
+  transform: scale(0.97);
+}
+
+.containerr .buttons button:disabled {
+  background-color: #fddf95;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Add step labels */
+.containerr .steps .circle::after {
+  position: absolute;
+  left: 64px;
+  font-size: 16px;
+  color: #666;
+  white-space: nowrap;
 }
