@@ -90,7 +90,12 @@ for ($i = 1; $i <= $rows; $i++) {
         <button id="confirmBtn">Confirm</button>
         <button id="cancelBtn">Cancel</button>
     </div>
-</div>
+</div>  
+
+
+
+
+
 
     <script src="pay.js"></script>
     <script src="progress.js"></script>

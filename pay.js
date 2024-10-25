@@ -9,11 +9,75 @@ const seatInfo = document.getElementById('seatInfo');
 const seatPrice = document.getElementById('seatPrice');
 const confirmBtn = document.getElementById('confirmBtn');
 const cancelBtn = document.getElementById('cancelBtn');
+const nextBtn = document.getElementById('next');
+const prevBtn = document.getElementById('prev');
+const stepsCircles = document.querySelectorAll('.circle');
 let selectedSeat = null;  // To store the seat that was clicked
 
-// Arrays to keep track of confirmed seats and total price
-let confirmedSeats = [];
-let totalCost = 0;
+// Ensure confirmedSeats and totalCost are properly updated
+let confirmedSeats = []; // This should be updated with selected seats
+let totalCost = 0; // This should be updated with the actual cost based on selected seats
+
+const step2Content = () => `
+  <div class="review-checkout">
+    <h3>Review and Checkout</h3>
+    <p>Seats: ${confirmedSeats.length > 0 ? confirmedSeats.join(", ") : "No seats selected"}</p>
+    <p>Total: ${totalCost > 0 ? totalCost + ' LE' : 'Free'}</p>
+    <div class="payment-methods">
+      <h3>Payment Method</h3>
+      <label>
+        <input type="radio" name="payment" value="credit-card" checked> Credit Card
+      </label><br>
+      <label>
+        <input type="radio" name="payment" value="valu"> Valu
+      </label>
+    </div>
+    <h3>Ticket Delivery</h3>
+    <label>
+      <input type="radio" name="delivery" value="email" checked> Email Tickets
+    </label>
+  </div>
+`;
+
+function showStep2() {
+    // Hide seat selection UI
+    document.querySelector('.selectTicket').style.display = 'none';
+    
+    // Display payment methods and ticket delivery option
+    const infoDiv = document.querySelector('.info');
+    
+    // Clear existing content in infoDiv (if necessary)
+    infoDiv.innerHTML = '';
+    
+    // Ensure that the seats and total cost are updated before rendering
+    if (confirmedSeats.length > 0 && totalCost > 0) {
+      infoDiv.innerHTML = step2Content();
+    } else {
+      // This is a fallback in case the values are not populated correctly
+      console.warn("No seats selected or total cost not calculated.");
+      infoDiv.innerHTML = `<p>Please select your seats and confirm total cost.</p>`;
+    }
+
+    // Update progress step to step 2
+    stepsCircles[0].classList.remove('active');
+    stepsCircles[1].classList.add('active');
+    
+    // Disable Next button for final step and enable Previous button
+    nextBtn.disabled = true;
+    prevBtn.disabled = false;
+}
+
+// Event listener for Next button to progress to step 2
+nextBtn.addEventListener('click', showStep2);
+
+// Example of updating confirmedSeats and totalCost
+// These lines should be run after seat selection is made
+
+
+
+
+
+
 
 // Function to set default view (Container 1 visible)
 function setDefaultView() {
@@ -117,3 +181,4 @@ window.onload = function() {
     console.log('Page loaded, setting default view');
     setDefaultView();
 };
+
