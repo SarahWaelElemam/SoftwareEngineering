@@ -10,6 +10,8 @@
     align-items: center; /* Vertically centers avatar and profile details */
     justify-content: space-between;
     padding: 2rem;
+    font-family: 'Times New Roman', Times, serif;
+
   }
   
   .avatar-container {
@@ -32,6 +34,8 @@
     align-items: flex-start; 
     flex-grow: 1;/* Aligns the text to the left */
     margin-left: -30rem;
+    font-family: 'Times New Roman', Times, serif;
+
   }
   
   .card-header {
@@ -69,3 +73,29 @@
     background-color: green;
   }
   
+  .purchase-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.purchase-history-table th, .purchase-history-table td {
+    border: 1px solid #FFD43B;
+    padding: 8px;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.purchase-history-table th {
+    background-color: #FFD43B;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+h3{
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+

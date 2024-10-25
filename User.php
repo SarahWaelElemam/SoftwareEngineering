@@ -88,13 +88,42 @@
                             </div>
                             <div style="height: 1em"></div>
                         </div>
+                        
                         <div class="buttons">
                             <button type="button" class="btn" id="edit-btn">Edit Profile</button>
                             <button type="button" class="btn" id="delete-btn">Delete Account</button>
                         </div>
-                    </div>
-                </div>
-            </div>
+                        </div>
+
+                        <div class="purchase-history">
+            <h3>Purchase History</h3>
+            <table class="purchase-history-table">
+                <thead>
+                    <tr>
+                        <th>Ticket Number</th>
+                        <th>Event Name</th>
+                        <th>Location</th>
+                        <th>Price</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>123456</td>
+                        <td>Concert A</td>
+                        <td>Cairo Stadium</td>
+                        <td>$50</td>
+                        <td>15 Oct 2024</td>
+                    </tr>
+                    <tr>
+                        <td>789012</td>
+                        <td>Festival B</td>
+                        <td>Giza Arena</td>
+                        <td>$75</td>
+                        <td>20 Oct 2024</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <!-- Edit Profile Form (initially hidden) -->
