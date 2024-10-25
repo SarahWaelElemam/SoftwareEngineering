@@ -1,0 +1,67 @@
+.container{
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+  }
+  .profile-content {
+    display: flex;
+    align-items: center; /* Vertically centers avatar and profile details */
+    justify-content: space-between;
+    padding: 2rem;
+  }
+  
+  .avatar-container {
+    width: 15rem; /* Adjust the size as needed */
+    height: 15rem;
+    border-radius: 50%;
+    overflow: hidden; /* To make the avatar circular */
+    background-color: #e9e9ea; /* Placeholder background */
+    margin-right: 8rem; /* Adds space between the avatar and the details */
+    background-image: url(memopng.png);
+    background-size: cover;
+    background-position: center;
+    
+  }
+  
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    flex-grow: 1;/* Aligns the text to the left */
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: flex-start; /* Aligns content to the left */
+    align-items: center;
+  }
+  
+  .card-body .table {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: #e9e9ea;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    color: black;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 20px; /* Adds space between buttons */
+    margin-top: 20px;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    background-color: #444451;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: green;
+  }
+  
