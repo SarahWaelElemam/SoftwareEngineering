@@ -14,19 +14,18 @@
     <div class="container" id="container1">
         <div class="screen"></div>
         <?php
-        $rows = 12;
-        $seats = 24;
-        for ($i = 1; $i <= $rows; $i++) {
-            echo '<div class="row">';
-            for ($j = 1; $j <= $seats; $j++) {
-                // Add the data-tooltip only for the first 4 rows
-                $tooltip = $i <= 4 ? "Platinum Seat: 100LE" : "Gold Seat: 75LE";
-                
-                echo '<div class="seat" data-tooltip="'.$tooltip.'"></div>';
-            }
-            echo '</div>';
-        }
-        ?>
+$rows = 12;
+$seats = 24;
+for ($i = 1; $i <= $rows; $i++) {
+    echo '<div class="row" data-row="' . $i . '">';  // Add data-row attribute here
+    for ($j = 1; $j <= $seats; $j++) {
+        $tooltip = $i <= 4 ? "Platinum Seat: 100LE" : "Gold Seat: 75LE";
+        echo '<div class="seat" data-tooltip="' . $tooltip . '"></div>';
+    }
+    echo '</div>';
+}
+?>
+
     </div>
 
     <!-- Container 2 -->
@@ -83,6 +82,16 @@
 
     </div>
     </div>
+    <!-- Confirmation Modal -->
+<div id="seatModal" class="modal" style="display:none;">
+    <div class="modal-content">
+        <p id="seatInfo"></p>
+        <p id="seatPrice"></p>
+        <button id="confirmBtn">Confirm</button>
+        <button id="cancelBtn">Cancel</button>
+    </div>
+</div>
+
     <script src="pay.js"></script>
     <script src="progress.js"></script>
 </body>
