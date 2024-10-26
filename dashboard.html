@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://kit.fontawesome.com/19a37f6564.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo">
+            <h2>Admin.</h2>
+        </div>
+        <ul>
+            <li><a href="#" class="active" data-page="dashboard">Dashboard</a></li>
+            <li><a href="#" data-page="chat">Chat</a></li>
+            <li><a href="#" data-page="calendar">Calendar</a></li>
+            <li><a href="#" data-page="events">Events</a></li>
+            <li><a href="#" data-page="users">User Management</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Chat Page -->
+        <div id="chat-page" class="page hidden">
+            <header>
+                <h1>Customer Support Tickets</h1>
+            </header>
+
+            <!-- Ticket Controls -->
+            <div class="ticket-controls">
+                <input type="text" placeholder="Search tickets...">
+                <select id="ticket-status-filter" onchange="filterTicketsByStatus()">
+                    <option value="all">All</option>
+                    <option value="open">Open</option>
+                    <option value="pending">Pending</option>
+                    <option value="resolved">Resolved</option>
+                </select>
+            </div>
+
+            <!-- Ticket List -->
+            <div class="ticket-list" id="ticketList">
+                <!-- Dynamically filled ticket items -->
+            </div>
+        </div>
+
+        <!-- Modal for Chat/Ticket -->
+        <div id="ticketModal" class="modal-overlay">
+            <div class="modal-content">
+                <!-- Exit Button to close modal -->
+                <button class="exit-button" onclick="closeModal()">Exit</button>
+
+                <div id="ticket-info">
+                    <!-- Ticket Information goes here -->
+                </div>
+
+                <!-- Chat Box -->
+                <div class="chat-box" id="chatBox"></div>
+
+                <!-- Chat Input -->
+                <div class="chat-input-container">
+                    <textarea id="adminMessage" placeholder="Type your message here..."></textarea>
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+
+                <!-- Ticket Status -->
+                <div class="ticket-status-container">
+                    <label for="ticketStatus">Update Status:</label>
+                    <select id="ticketStatus" onchange="onStatusChange()">
+                        <option value="open">Open</option>
+                        <option value="pending">Pending</option>
+                        <option value="resolved">Resolved</option>
+                    </select>
+                    <button id="confirmButton" onclick="confirmStatusUpdate()" disabled>Confirm</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+
+</body>
+
+</html>
