@@ -105,6 +105,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+  <?php include 'NavBar.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -211,7 +212,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
     </section>
-
+    <?php include 'Footer.php'; ?>
 <script src="Login_Signup.js"></script>
 </body>
 </html>

@@ -1,0 +1,189 @@
+/* Base styles for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Make body a flex container */
+    /* Ensure body takes full height of viewport */
+  }
+  
+  /* Footer styles */
+  footer {
+    flex-direction: column; /* Arrange items vertically */
+    background-color: #f0f0f0;
+    padding: 20px 40px;
+    color: #000;
+    margin-top: auto; /* Push footer to the bottom of the page */
+  }
+  
+  /* Footer container to align elements */
+  .footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  /* Left section of the footer */
+  .footer-left {
+    display: flex;
+    align-items: center;
+    margin: 0 20%;
+  }
+  
+  /* Footer logo styles */
+  .footer-logo {
+    font-size: 1.8rem;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-right: 60px;
+    margin-bottom: 100px;
+  }
+  
+  /* Footer links styles */
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 10%;
+    margin-bottom: 15%;
+  }
+  
+  .footer-links li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-links a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  /* Info section in the footer */
+  .footer-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 50px;
+  }
+  
+  .footer-info ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-info li {
+    margin-bottom: 5px;
+  }
+  
+  .footer-info a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  /* Help section in the footer */
+  .footer-help {
+    margin: 0 100px;
+  }
+  
+  .footer-help a {
+    line-height: 1.5;
+    background-color: #f9f9f9;
+    border: 1px solid #000;
+    border-radius: 20px;
+    padding: 10px 30px;
+    text-decoration: none;
+    color: #000;
+    display: inline-block;
+  }
+  
+  .footer-help a:hover {
+    background-color: #ffcb10;
+  }
+  
+  /* Bottom section of the footer */
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+  }
+  
+  /* Social icons styling */
+  .social-icons {
+    display: flex;
+    margin: 0 100px;
+  }
+  
+  .social-icons a {
+    margin-right: 15px;
+    background-color: #ffcb10;
+    border-radius: 50%;
+    padding: 10px;
+    padding: 20px;
+    transition: background-color 0.3s; /* Smooth hover effect */
+  }
+  
+  .social-icons img {
+    width: 30px;
+    height: 30px;
+  }
+  .social-icons img:hover {
+    background-color: #adadc6;
+    width: 30px;
+    height: 30px;
+  }
+  .footer-bottom p {
+    margin: 0;
+    margin: 0 100px;
+  }
+  
+  .footer-bottom a {
+    color: #000;
+    text-decoration: none;
+  }
+  
+  /* Media queries for responsiveness */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .footer-left {
+      margin: 0;
+      margin-bottom: 20px;
+    }
+  
+    .footer-help {
+      margin-left: 0;
+      margin-top: 10px;
+    }
+  
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .footer-logo {
+      font-size: 1.5rem;
+    }
+  
+    .footer-links a,
+    .footer-info a {
+      font-size: 0.9rem;
+    }
+  
+    .footer-help a {
+      padding: 8px 16px;
+    }
+  
+    .social-icons img {
+      width: 25px;
+      height: 25px;
+    }
+  }
