@@ -94,7 +94,7 @@
             </div>
             <div class="input-group">
                 <label>Type of Event:</label>
-                <label><input type="radio" name="eventType" value="theatre" required> Theatre</label>
+                <label><input type="radio" name="eventType" value="Theatre" required> Theatre</label>
                 <label><input type="radio" name="eventType" value="concert"> Concert</label>
                 <label><input type="radio" name="eventType" value="exhibition"> Exhibition</label>
                 <div class="error-message" id="eventTypeError"></div>
@@ -108,10 +108,12 @@
 
             <!-- Location Section -->
             <h3>Location</h3>
+            
+          
             <div class="input-group">
-                <label for="location">Location:</label>
-                <input type="text" id="location" name="location" required>
-                <div class="error-message" id="locationError"></div>
+                <label for="venue">Venue Name:</label>
+                <input type="text" id="venue" name="venue">
+                <div class="error-message" id="venueError"></div>
             </div>
             <div class="input-group">
                 <label for="address">Address:</label>
@@ -119,11 +121,10 @@
                 <div class="error-message" id="addressError"></div>
             </div>
             <div class="input-group">
-                <label for="venue">Venue:</label>
-                <input type="text" id="venue" name="venue">
-                <div class="error-message" id="venueError"></div>
+                <label for="venueMapLink">Google Maps Link:</label>
+                <input type="text" id="venueMapLink" name="venueMapLink">
+                <div class="error-message" id="venueMapLinkError"></div>
             </div>
-
             <!-- Date and Time Section -->
             <h3>Date and Time</h3>
             <div class="input-group">
@@ -170,9 +171,9 @@
             <div class="input-group">
                 <label for="eventStatus">Event Status:</label>
                 <select id="eventStatus" name="eventStatus">
-                    <option value="upcoming">Upcoming</option>
-                    <option value="ongoing">Ongoing</option>
-                    <option value="completed">Completed</option>
+                    <option value="Upcoming">Upcoming</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Completed">Completed</option>
                 </select>
                 <div class="error-message" id="eventStatusError"></div>
             </div>
@@ -192,11 +193,7 @@
                 <input type="text" id="venueProfileLink" name="venueProfileLink">
                 <div class="error-message" id="venueProfileLinkError"></div>
             </div>
-            <div class="input-group">
-                <label for="venueMapLink">Google Maps Link:</label>
-                <input type="text" id="venueMapLink" name="venueMapLink">
-                <div class="error-message" id="venueMapLinkError"></div>
-            </div>
+           
            <!-- Venue Image Upload -->
             <div class="input-group">
                 <label for="venueImage">Venue Image:</label>
@@ -215,60 +212,63 @@
         <span class="modal-close" onclick="closeModal('editEventModal')">&times;</span>
         <h2>Edit Event</h2>
         <form id="editEventForm" onsubmit="return handleEditEvent(event)">
-            
+
             <!-- Event Details Section -->
             <h3>Event Details</h3>
+            <input type="hidden" id="editEventId">
             <div class="input-group">
                 <label for="editEventName">Event Name:</label>
-                <input type="text" id="editEventName" name="eventName" required>
+                <input type="text" id="editEventName" name="editEventName" required>
                 <div class="error-message" id="editEventNameError"></div>
             </div>
             <div class="input-group">
                 <label for="editEventDescription">Description:</label>
-                <textarea id="editEventDescription" name="eventDescription"></textarea>
+                <textarea id="editEventDescription" name="editEventDescription"></textarea>
                 <div class="error-message" id="editEventDescriptionError"></div>
             </div>
             <div class="input-group">
                 <label>Type of Event:</label>
-                <label><input type="radio" name="editEventType" value="theatre" required> Theatre</label>
-                <label><input type="radio" name="editEventType" value="concert"> Concert</label>
-                <label><input type="radio" name="editEventType" value="exhibition"> Exhibition</label>
+                <label><input type="radio" name="editEventType" value="Theatre" required> Theatre</label>
+                <label><input type="radio" name="editEventType" value="Concert"> Concert</label>
+                <label><input type="radio" name="editEventType" value="Exhibition"> Exhibition</label>
                 <div class="error-message" id="editEventTypeError"></div>
             </div>
+
+            <!-- Event Image Upload -->
             <div class="input-group">
-                <label for="editEventImage">Image URL:</label>
-                <input type="text" id="editEventImage" name="eventImage">
+                <label for="editEventImage">Event Image:</label>
+                <input type="file" id="editEventImage" name="editEventImage" accept="image/*">
                 <div class="error-message" id="editEventImageError"></div>
             </div>
 
             <!-- Location Section -->
             <h3>Location</h3>
             <div class="input-group">
-                <label for="editLocation">Location:</label>
-                <input type="text" id="editLocation" name="location" required>
-                <div class="error-message" id="editLocationError"></div>
+                <label for="editVenue">Venue Name:</label>
+                <input type="text" id="editVenue" name="editVenue">
+                <div class="error-message" id="editVenueError"></div>
             </div>
             <div class="input-group">
                 <label for="editAddress">Address:</label>
-                <input type="text" id="editAddress" name="address">
+                <input type="text" id="editAddress" name="editAddress">
                 <div class="error-message" id="editAddressError"></div>
             </div>
             <div class="input-group">
-                <label for="editVenue">Venue:</label>
-                <input type="text" id="editVenue" name="venue">
-                <div class="error-message" id="editVenueError"></div>
+                <label for="editVenueMapLink">Google Maps Link:</label>
+                <input type="text" id="editVenueMapLink" name="editVenueMapLink">
+                <div class="error-message" id="editVenueMapLinkError"></div>
             </div>
 
             <!-- Date and Time Section -->
             <h3>Date and Time</h3>
             <div class="input-group">
                 <label for="editStartDate">Start Date:</label>
-                <input type="datetime-local" id="editStartDate" name="startDate" required>
+                <input type="datetime-local" id="editStartDate" name="editStartDate" required>
                 <div class="error-message" id="editStartDateError"></div>
             </div>
             <div class="input-group">
                 <label for="editEndDate">End Date (optional):</label>
-                <input type="datetime-local" id="editEndDate" name="endDate">
+                <input type="datetime-local" id="editEndDate" name="editEndDate">
                 <div class="error-message" id="editEndDateError"></div>
             </div>
 
@@ -276,42 +276,59 @@
             <h3>Access & Tickets</h3>
             <div id="editTicketPriceContainer">
                 <h4>Ticket Prices</h4>
-                <button type="button" onclick="addEditTicketRow()">Add Ticket Type</button>
+                <button type="button" onclick="edit_addTicketRow()">Add Ticket Type</button>
                 <div id="editTicketRows"></div>
             </div>
 
             <!-- Organizer Section -->
             <h3>Organizer Details</h3>
-            <div class="input-group">
-                <label for="editCreatedBy">Organizer:</label>
-                <input type="text" id="editCreatedBy" name="createdBy" required>
-                <div class="error-message" id="editCreatedByError"></div>
-            </div>
+            
             <div class="input-group">
                 <label for="editOrganizerName">Organizer Name:</label>
-                <input type="text" id="editOrganizerName" name="organizerName">
+                <input type="text" id="editOrganizerName" name="editOrganizerName">
                 <div class="error-message" id="editOrganizerNameError"></div>
             </div>
             <div class="input-group">
-                <label for="editOrganizerLogo">Organizer Logo URL:</label>
-                <input type="text" id="editOrganizerLogo" name="organizerLogo">
+                <label for="editOrganizerLogo">Organizer Logo:</label>
+                <input type="file" id="editOrganizerLogo" name="editOrganizerLogo" accept="image/*">
                 <div class="error-message" id="editOrganizerLogoError"></div>
             </div>
+           
 
-            <!-- Status and Recurrence Section -->
-            <h3>Status & Recurrence</h3>
+            <!-- Event Status Section -->
+            <h3>Status</h3>
             <div class="input-group">
                 <label for="editEventStatus">Event Status:</label>
-                <select id="editEventStatus" name="eventStatus">
-                    <option value="upcoming">Upcoming</option>
-                    <option value="ongoing">Ongoing</option>
-                    <option value="completed">Completed</option>
+                <select id="editEventStatus" name="editEventStatus">
+                    <option value="Upcoming">Upcoming</option>
+                    <option value="Ongoing">Ongoing</option>
+                    <option value="Completed">Completed</option>
                 </select>
                 <div class="error-message" id="editEventStatusError"></div>
             </div>
 
-            <!-- Submit Button -->
-            <button type="submit">Save Changes</button>
+            <!-- Venue Facilities Section -->
+            <h3>Venue Facilities</h3>
+            <div class="input-group">
+                <label>Facilities Available:</label>
+                <label><input type="checkbox" name="editVenueFacilities" value="Bathrooms"> Bathrooms</label>
+                <label><input type="checkbox" name="editVenueFacilities" value="Food Services"> Food Services</label>
+                <label><input type="checkbox" name="editVenueFacilities" value="Parking"> Parking</label>
+                <label><input type="checkbox" name="editVenueFacilities" value="Security"> Security</label>
+                <div class="error-message" id="editVenueFacilitiesError"></div>
+            </div>
+            <div class="input-group">
+    <label for="editVenueProfileLink">Venue Profile Link:</label>
+    <input type="text" id="editVenueProfileLink" name="editVenueProfileLink">
+    <div class="error-message" id="editVenueProfileLinkError"></div>
+</div>
+<!-- Venue Image Upload -->
+<div class="input-group">
+    <label for="editVenueImage">Venue Image:</label>
+    <input type="file" id="editVenueImage" name="editVenueImage" accept="image/*">
+    <div class="error-message" id="editVenueImageError"></div>
+</div>
+<button type="submit">Save Changes</button>
         </form>
     </div>
 </div>
@@ -321,14 +338,18 @@
     <table class="common-table-style events-table">
         <thead>
             <tr>
-                <<th>ID</th>
-            <th>Event Name</th>
-            <th>Date</th>
-            <th>Location</th>
-            <th>Event Type</th>
-            <th>Organizer</th>
+        <th>ID</th>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Address</th>
+        <th>Event Type</th>
+        <th>Organizer</th>
+        <th>Status</th>
+        <th>Event Image</th>
+        <th>Organizer Logo</th>
+        <th>Venue Image</th>
             
-            <th>Status</th>
+           
                 <th><button class="buttonadd" id="addEventBtn">Add Event</button></th>
             </tr>
         </thead>
@@ -416,24 +437,26 @@ const events = [
         eventName: "Tech Conference 2024",
         eventDescription: "A conference for tech enthusiasts to share knowledge and network.",
         startDate: "2024-05-15T10:00:00Z",
-        eventType: "Conference",
-        location: "Convention Center, Cityville",
+        eventType: "Theatre",
+        address: "Convention Center, Cityville",
         venue: "City Convention Center",
-        eventImage: new Blob(), // Placeholder for an actual image file
+        eventImage: "../images/eventMemo.png", // Placeholder for an actual image file
         organizer: {
             name: "Tech Innovations Inc.",
-            logo: new Blob(), // Placeholder for an actual logo file
+            logo: "../images/organizerslogo.png" // Placeholder for an actual logo file
         },
-        ticketPrice: 100,
+        ticketPrice: [ // Changed to an array of ticket objects
+            { type: "General Admission", price: 100, currency: "EGP" },
+            { type: "VIP Admission", price: 200, currency: "EGP" }],
         eventStatus: "Upcoming",
         attendees: [],
         venueDetails: {
-            facilities: ["WiFi", "Catering", "Parking"],
+            facilities: ["Bathrooms", "Food Services", "Parking"],
             links: {
                 venueProfile: "http://venueprofile.com",
                 maps: "http://mapslink.com"
             },
-            venueImage: "../images/Venue.png" // Placeholder for an actual venue image file
+            venueImage: "../images/Venue.png"// Placeholder for an actual venue image file
         }
     },
     {
@@ -442,14 +465,16 @@ const events = [
         eventDescription: "An exhibition showcasing contemporary art from local artists.",
         startDate: "2024-06-20T18:00:00Z",
         eventType: "Exhibition",
-        location: "Gallery XYZ, Art District",
+        address: "Gallery XYZ, Art District",
         venue: "Gallery XYZ",
-        eventImage: new Blob(), // Placeholder for an actual image file
+        eventImage: "../images/eventsoundandlightjpg.jpg", // Placeholder for an actual image file
         organizer: {
             name: "Art Community",
-            logo: new Blob(), // Placeholder for an actual logo file
+            logo: "../images/soundandlightorglogo.png" // Placeholder for an actual logo file
         },
-        ticketPrice: 20,
+        ticketPrice: [ // Changed to an array of ticket objects
+            { type: "General Admission", price: 100, currency: "EGP" },
+            { type: "VIP Admission", price: 200, currency: "EGP" }],
         eventStatus: "Upcoming",
         attendees: [],
         venueDetails: {
@@ -458,34 +483,10 @@ const events = [
                 venueProfile: "http://galleryxyz.com",
                 maps: "http://gallerymap.com"
             },
-            venueImage: new Blob() // Placeholder for an actual venue image file
-        }
-    },
-    {
-        id: 3,
-        eventName: "Music Festival 2024",
-        eventDescription: "Join us for a weekend of music, food, and fun!",
-        startDate: "2024-07-10T12:00:00Z",
-        eventType: "Festival",
-        location: "Open Grounds, Music City",
-        venue: "Music Festival Grounds",
-        eventImage: new Blob(), // Placeholder for an actual image file
-        organizer: {
-            name: "Live Music Events",
-            logo: new Blob(), // Placeholder for an actual logo file
-        },
-        ticketPrice: 150,
-        eventStatus: "Upcoming",
-        attendees: [],
-        venueDetails: {
-            facilities: ["Food Trucks", "Restrooms", "First Aid"],
-            links: {
-                venueProfile: "http://musicfestival.com",
-                maps: "http://musicfestivalmap.com"
-            },
-            venueImage: new Blob() // Placeholder for an actual venue image file
+            venueImage: "../images/eventsoundandlightjpg.jpg", // Placeholder for an actual venue image file
         }
     }
+   
 ];
 
 // Function to render events table with all attributes 
@@ -501,8 +502,16 @@ function renderEvents() {
         tr.innerHTML = `
             <td>${event.id}</td>
             <td>${event.eventName}</td>
-            <td>${new Date(event.startDate).toLocaleString()}</td> <!-- Formatting the date -->
-            <td>${event.location}</td>
+           ${new Date(event.startDate).toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true,
+        timeZone: 'UTC'  // Set timezone to UTC
+    })}</td> <!-- Formatting the date -->
+            <td>${event.address}</td>
             <td>${event.eventType}</td>
             <td>${event.organizer.name}</td>
             <td>${event.eventStatus}</td>
@@ -510,7 +519,10 @@ function renderEvents() {
                 <img src="${event.eventImage}" alt="${event.eventName} image" class="event-image" />
             </td>
             <td>
-                <img src="${event.venueImage}" alt="${event.venueDetails.venueName} image" class="venue-image" />
+                <img src="${event.organizer.logo}" alt="${event.organizer.name} image" class="event-image">
+            </td>
+             <td>
+                <img src="${event.venueDetails.venueImage}" alt=${event.eventName} image" class="event-image">
             </td>
             <td class="action-icons">
                 <button class="edit-btn" onclick="openEditEventModal(${event.id})">
@@ -536,7 +548,7 @@ function handleAddEvent(event) {
     const eventNameElement = document.getElementById('eventName');
     const eventDescriptionElement = document.getElementById('eventDescription');
     const startDateElement = document.getElementById('startDate');
-    const locationElement = document.getElementById('location');
+   const addressElement = document.getElementById('address')
     const venueElement = document.getElementById('venue');
     const organizerNameElement = document.getElementById('organizerName');
     const eventImageElement = document.getElementById('eventImage');
@@ -546,7 +558,7 @@ function handleAddEvent(event) {
     
     // Check for null elements and log errors
     if (!eventNameElement || !eventDescriptionElement || !startDateElement || 
-        !locationElement || !venueElement || !organizerNameElement || 
+         !venueElement || !organizerNameElement || 
         !eventImageElement || !organizerLogoElement || 
         !venueImageElement || !eventStatusElement) {
         
@@ -555,7 +567,10 @@ function handleAddEvent(event) {
         if (!eventNameElement) console.error("eventName is null");
         if (!eventDescriptionElement) console.error("eventDescription is null");
         if (!startDateElement) console.error("startDate is null");
-        if (!locationElement) console.error("location is null");
+        if (!addressElement){
+
+            console.error("address not defined");
+        }
         if (!venueElement) console.error("venue is null");
         if (!organizerNameElement) console.error("organizerName is null");
         if (!eventImageElement) console.error("eventImage is null");
@@ -566,18 +581,19 @@ function handleAddEvent(event) {
         return;
     }
 
-    const newEvent = {
+     // Create the new event object
+     const newEvent = {
         id: events.length + 1,
         eventName: eventNameElement.value,
         eventDescription: eventDescriptionElement.value,
         startDate: startDateElement.value,
         eventType: document.querySelector('input[name="eventType"]:checked').value,
-        location: locationElement.value,
+        address: addressElement.value,
         venue: venueElement.value,
-        eventImage: eventImageElement.files[0],
+        eventImage: eventImageElement.files[0] ? URL.createObjectURL(eventImageElement.files[0]) : "", // Convert file to URL
         organizer: {
             name: organizerNameElement.value,
-            logo: organizerLogoElement.files[0],
+            logo: organizerLogoElement.files[0] ? URL.createObjectURL(organizerLogoElement.files[0]) : "", // Convert file to URL
         },
         ticketPrice: gatherTicketPrices(),
         eventStatus: eventStatusElement.value,
@@ -585,10 +601,10 @@ function handleAddEvent(event) {
         venueDetails: {
             facilities: Array.from(document.querySelectorAll('input[name="venueFacilities"]:checked')).map(cb => cb.value),
             links: {
-                venueProfile: document.getElementById('venueProfileLink').value, // Corrected ID here
-                maps: document.getElementById('venueMapLink').value // Corrected ID here
+                venueProfile: document.getElementById('venueProfileLink').value,
+                maps: document.getElementById('venueMapLink').value
             },
-            venueImage: venueImageElement.files[0]
+            venueImage: venueImageElement.files[0] ? URL.createObjectURL(venueImageElement.files[0]) : "" // Convert file to URL
         }
     };
 
@@ -598,47 +614,111 @@ function handleAddEvent(event) {
     document.getElementById('eventForm').reset();
 }
 
-// Function to handle editing an event with all attributes
 function handleEditEvent(event) {
     event.preventDefault();
-
-    const eventId = parseInt(document.getElementById('editEventId').value);
-    const eventName = document.getElementById('editEventName').value;
-    const eventDescription = document.getElementById('editEventDescription').value;
-    const eventDate = document.getElementById('editEventDate').value;
-    const eventType = document.getElementById('editEventType').value;
-    const location = document.getElementById('editLocation').value;
-    const venue = document.getElementById('editVenue').value;
-    const organizer = document.getElementById('editOrganizer').value;
-    const ticketPrices = gatherEditTicketPrices();  // Collect ticket prices for edit form
-
-    if (validateEditEventForm()) {
-        const eventIndex = events.findIndex(event => event.id === eventId);
-        if (eventIndex !== -1) {
-            events[eventIndex] = {
-                ...events[eventIndex],
-                eventName,
-                eventDescription,
-                startDate: eventDate,
-                eventType,
-                location,
-                venue,
-                organizer: { name: organizer },
-                ticketPrice: ticketPrices,
-               
-                venueDetails: {
-                    facilities: document.getElementById('editFacilities').value.split(','),
-                    links: {
-                        venueProfile: document.getElementById('editVenueProfile').value,
-                        maps: document.getElementById('editMapsLink').value
-                    }
-                }
-            };
-            renderEvents();
-            closeModal('editEventModal');
-        }
+    console.log("Editing event");
+// Validate the form inputs
+if (!validateEditEventForm()) {
+        console.error("Validation failed.");
+        return; // Stop execution if validation fails
     }
-    return false;
+
+    // Get the event ID from the hidden input
+    const eventId = parseInt(document.getElementById('editEventId').value, 10);
+    console.log("Event ID to edit:", eventId);
+
+    // Find the event to edit
+    const existingEventIndex = events.findIndex(e => e.id === eventId);
+    if (existingEventIndex === -1) {
+        console.error("Event not found!");
+        return;
+    }
+
+    const existingEvent = events[existingEventIndex];
+
+    // Check if the existing event and its organizer are defined
+    if (!existingEvent || !existingEvent.organizer) {
+        console.error("Event or Organizer is not defined!");
+        return;
+    }
+
+    // Proceed with editing...
+    console.log("Editing event:", existingEvent);
+
+    // Access the organizer logo element
+    const editOrganizerLogoElement = document.getElementById('editOrganizerLogo');
+    const updatedOrganizerLogo = editOrganizerLogoElement.files[0]
+        ? URL.createObjectURL(editOrganizerLogoElement.files[0]) // New image selected
+        : existingEvent.organizer.logo; // Use existingEvent instead of event
+
+    // Similarly handle the event image
+    const editEventImageElement = document.getElementById('editEventImage');
+    const updatedEventImage = editEventImageElement.files[0]
+        ? URL.createObjectURL(editEventImageElement.files[0]) // New image selected
+        : existingEvent.eventImage; // Use existingEvent instead of event
+
+
+
+        // Access the venue image element
+        const editVenueImageElement = document.getElementById('editVenueImage'); // Use 'editVenueImage' instead of 'venueImage'
+        const updatedVenueImage = editVenueImageElement.files[0]
+        ? URL.createObjectURL(editVenueImageElement.files[0]) // New image selected
+        : existingEvent.venueDetails.venueImage;
+
+    // Check for null elements and log errors
+    const editEventNameElement = document.getElementById('editEventName');
+    const editEventDescriptionElement = document.getElementById('editEventDescription');
+    const editStartDateElement = document.getElementById('editStartDate');
+    const editVenueElement = document.getElementById('editVenue');
+    const editAddressElement = document.getElementById('editAddress');
+    const editOrganizerNameElement = document.getElementById('editOrganizerName');
+    const editEventStatusElement = document.getElementById('editEventStatus');
+
+    // Check for null elements and log errors
+    if (!editEventNameElement || !editEventDescriptionElement || 
+        !editStartDateElement || !editVenueElement || 
+        !editOrganizerNameElement || !editAddressElement || 
+        !editEventStatusElement || !updatedEventImage || !updatedOrganizerLogo) {
+        
+        console.error("One or more elements are null, please check your IDs");
+        return;
+    }
+
+    // Gather updated event details
+    const updatedEvent = {
+        id: eventId, // Keep the same ID
+        eventName: editEventNameElement.value,
+        eventDescription: editEventDescriptionElement.value,
+        startDate: editStartDateElement.value,
+        eventType: document.querySelector('input[name="editEventType"]:checked').value,
+        address: editAddressElement.value,
+        venue: editVenueElement.value,
+        eventImage: updatedEventImage,
+        organizer: {
+            name: editOrganizerNameElement.value,
+            logo: updatedOrganizerLogo // Use updatedOrganizerLogo
+        },
+        ticketPrice: editgatherTicketPrices(), // Pass the ID of the ticket rows container
+        eventStatus: editEventStatusElement.value,
+        attendees: [], // Keep the attendees as-is or adjust as necessary
+        venueDetails: {
+            facilities: Array.from(document.querySelectorAll('input[name="editVenueFacilities"]:checked')).map(cb => cb.value),
+            links: {
+                venueProfile: document.getElementById('editVenueProfileLink').value,
+                maps: document.getElementById('editVenueMapLink').value
+            },
+            venueImage: updatedVenueImage , // Convert file to URL
+        }
+    };
+
+    // Update the event in the array
+    events[existingEventIndex] = updatedEvent;
+    console.log("Updated Event:", updatedEvent);
+
+    // Refresh the event list and close modal
+    renderEvents();
+    closeModal('editEventModal');
+    document.getElementById('editEventForm').reset();
 }
 
 // Adds a row by making an inactive row active and fills it
@@ -654,7 +734,20 @@ function addTicketRow() {
     `;
     ticketRows.appendChild(row);
 }
+function edit_addTicketRow(){
 
+    const ticketRows = document.getElementById("editTicketRows");
+    const row = document.createElement("div");
+    row.classList.add("ticket-row");
+
+    row.innerHTML = `
+        <input type="text" placeholder="Ticket Type (e.g., VIP)" class="ticket-type" required />
+        <input type="number" placeholder="Ticket Price" class="ticket-price" min="0" required />
+        <button type="button" class="remove-ticket" onclick="removeTicketRow(this)">Remove</button>
+    `;
+    ticketRows.appendChild(row);
+
+}
 // Remove ticket row
 function removeTicketRow(button) {
     const row = button.parentNode;
@@ -662,7 +755,7 @@ function removeTicketRow(button) {
 }
 // Gathers ticket prices and types from dynamic input fields
 function gatherTicketPrices() {
-    const ticketFields = document.querySelectorAll('#ticketPriceContainer .ticket-field');
+    const ticketFields = document.querySelectorAll('#ticketPriceContainer .ticket-row');
     const tickets = [];
     
     ticketFields.forEach(field => {
@@ -673,6 +766,26 @@ function gatherTicketPrices() {
         if (type && !isNaN(price)) {
             tickets.push({ type, price, currency: 'EGP' }); // Assuming EGP as currency
         }
+        console.log("ticketPrices in gattherTicketPrices: ",tickets);
+    });
+    return tickets;
+}
+
+
+// Gathers ticket prices and types from dynamic input fields
+function editgatherTicketPrices() {
+    const ticketFields = document.querySelectorAll('#editTicketPriceContainer .ticket-row');
+    const tickets = [];
+    
+    ticketFields.forEach(field => {
+        const type = field.querySelector('.ticket-type').value;
+        const price = parseFloat(field.querySelector('.ticket-price').value);
+
+        // Ensure both type and price are provided
+        if (type && !isNaN(price)) {
+            tickets.push({ type, price, currency: 'EGP' }); // Assuming EGP as currency
+        }
+        console.log("ticketPrices in gattherTicketPrices: ",tickets);
     });
     return tickets;
 }
@@ -680,6 +793,7 @@ function gatherTicketPrices() {
 // Modal management for adding and editing events
 document.getElementById('addEventBtn').addEventListener('click', () => {
     document.getElementById('eventForm').reset();
+    resetInputStylesEvent()
     openModal('addEventModal');
 });
 
@@ -701,7 +815,7 @@ function validateEventForm() {
     const eventDescription = document.getElementById('eventDescription');
     const startDate = document.getElementById('startDate');
     const endDate = document.getElementById('endDate');
-    const location = document.getElementById('location');
+    
     const address = document.getElementById('address');
     const eventType = document.querySelector('input[name="eventType"]:checked');
     const createdBy = document.getElementById('createdBy');
@@ -719,7 +833,7 @@ function validateEventForm() {
         eventDescription: 'Event description must be at least 10 characters long.',
         startDate: 'Please select a valid start date and time.',
         endDate: 'End date must be later than start date.',
-        location: 'Location must be specified.',
+       
         address: 'Address must be at least 5 characters long.',
         eventType: 'Please select an event type.',
         createdBy: 'Organizer must be specified.',
@@ -755,10 +869,7 @@ function validateEventForm() {
         setError(document.getElementById('eventTypeError'), document.getElementById('eventTypeError'), errors.eventType);
         isValid = false;
     }
-    if (location.value.length < 3) {
-        setError(location, document.getElementById('locationError'), errors.location);
-        isValid = false;
-    }
+    
     if (address.value.length < 5) {
         setError(address, document.getElementById('addressError'), errors.address);
         isValid = false;
@@ -799,77 +910,233 @@ function validateEventForm() {
     return isValid;
 }
 
-
-
-function openEditEventModal(id) {
-    const event = events.find(event => event.id === id);
-    if (event) {
-        document.getElementById('editEventId').value = event.id;
-        document.getElementById('editEventName').value = event.eventName;
-        document.getElementById('editEventDescription').value = event.eventDescription;
-        document.getElementById('editEventDate').value = event.startDate;
-        document.getElementById('editEventType').value = event.eventType;
-        document.getElementById('editLocation').value = event.location;
-        document.getElementById('editVenue').value = event.venue;
-        document.getElementById('editOrganizer').value = event.organizer.name;
-       
-        document.getElementById('editFacilities').value = event.venueDetails.facilities.join(',');
-        document.getElementById('editVenueProfile').value = event.venueDetails.links.venueProfile;
-        document.getElementById('editMapsLink').value = event.venueDetails.links.maps;
-
-        // Populate ticket price fields
-        event.ticketPrice.forEach(ticket => {
-            document.getElementById(`edit${ticket.type}Price`).value = ticket.price;
-        });
-
-        openModal('editEventModal');
-    }
-}
-// Similar validation function for editing events
+// Validation Function
 function validateEditEventForm() {
-    const editEventName = document.getElementById('editEventName');
-    const editEventDate = document.getElementById('editEventDate');
-    const editEventDescription = document.getElementById('editEventDescription');
-    const ticketPrices = gatherEditTicketPrices();
-    const editEventNameError = document.getElementById('editEventNameError');
-    const editEventDateError = document.getElementById('editEventDateError');
-    const editEventDescriptionError = document.getElementById('editEventDescriptionError');
-    
-    resetEditFormInputStyles();
+    // Get form elements
+    const eventName = document.getElementById('editEventName');
+    const eventDescription = document.getElementById('editEventDescription');
+    const startDate = document.getElementById('editStartDate');
+    const VenueName = document.getElementById('editVenue');
+    const address = document.getElementById('editAddress');
+    const eventType = document.querySelector('input[name="editEventType"]:checked');
+    const organizerName = document.getElementById('editOrganizerName');
+    const eventStatus = document.getElementById('editEventStatus');
+    const organizerLogo = document.getElementById('editOrganizerLogo');
+    const venueProfileLink = document.getElementById('editVenueProfileLink');
+    const venueMapLink = document.getElementById('editVenueMapLink');
+    const venueImage = document.getElementById('editVenueImage');
+    const eventImage = document.getElementById('editEventImage');
+
+    // Error Elements
+    const errors = {
+        eventName: 'Event name must be at least 3 characters long.',
+        eventDescription: 'Event description must be at least 10 characters long.',
+        startDate: 'Please select a valid start date and time.',
+        venue: 'venue must be at least 5 characters long.',
+        address: 'Address must be at least 5 characters long.',
+        eventType: 'Please select an event type.',
+        organizerName: 'Organizer name must be at least 3 characters long.',
+        eventStatus: 'Please select an event status.',
+        organizerLogo: 'Please upload an organizer logo.',
+        venueProfileLink: 'Please enter a valid URL for the venue profile.',
+        venueMapLink: 'Please enter a valid URL for the venue map.',
+        venueImage: 'Please upload a venue image.',
+        eventImage: 'Please upload an event image.',
+        invalidImageFormat: 'Invalid image format. Please upload a JPEG, PNG, or GIF.'
+    };
+
+    resetEditInputStyles(); // Function to reset input styles
 
     let isValid = true;
 
-    if (editEventName.value.length < 3) {
-        setEditFormError(editEventName, editEventNameError, 'Event name must be at least 3 characters long.');
+    if (eventName.value.length < 3) {
+        setError(eventName, document.getElementById('editEventNameError'), errors.eventName);
+        isValid = false;
+    }
+    if (eventDescription.value.length < 10) {
+        setError(eventDescription, document.getElementById('editEventDescriptionError'), errors.eventDescription);
+        isValid = false;
+    }
+    if (!startDate.value) {
+        setError(startDate, document.getElementById('editStartDateError'), errors.startDate);
         isValid = false;
     }
 
-    if (!editEventDate.value) {
-        setEditFormError(editEventDate, editEventDateError, 'Please select a valid date.');
+    if (VenueName.value.length < 5) {
+        setError(VenueName, document.getElementById('editVenueError'), errors.venue);
+        isValid = false;
+    }
+    if (address.value.length < 5) {
+        setError(address, document.getElementById('editAddressError'), errors.address);
+        isValid = false;
+    }
+    if (!eventType) {
+        setError(document.getElementById('editEventTypeError'), document.getElementById('editEventTypeError'), errors.eventType);
+        isValid = false;
+    }
+    if (organizerName.value.length < 3) {
+        setError(organizerName, document.getElementById('editOrganizerNameError'), errors.organizerName);
         isValid = false;
     }
 
-    if (editEventDescription.value.length < 10) {
-        setEditFormError(editEventDescription, editEventDescriptionError, 'Event description must be at least 10 characters long.');
+    // Image format validation
+    const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+
+    // Event Image Validation
+    if (eventImage.files.length) {
+        const fileType = eventImage.files[0].type;
+        if (!validImageTypes.includes(fileType)) {
+            setError(eventImage, document.getElementById('editEventImageError'), errors.invalidImageFormat);
+            isValid = false;
+        }
+    } 
+
+    // Organizer Logo Validation
+    if (organizerLogo.files.length) {
+        const fileType = organizerLogo.files[0].type;
+        if (!validImageTypes.includes(fileType)) {
+            setError(organizerLogo, document.getElementById('editOrganizerLogoError'), errors.invalidImageFormat);
+            isValid = false;
+        }
+    } 
+
+    // Venue Image Validation
+    if (venueImage.files.length) {
+        const fileType = venueImage.files[0].type;
+        if (!validImageTypes.includes(fileType)) {
+            setError(venueImage, document.getElementById('editVenueImageError'), errors.invalidImageFormat);
+            isValid = false;
+        }
+    } 
+
+    if (!venueProfileLink.value) {
+        setError(venueProfileLink, document.getElementById('editVenueProfileLinkError'), errors.venueProfileLink);
         isValid = false;
     }
-
-    if (ticketPrices.some(ticket => isNaN(ticket.price) || ticket.price <= 0)) {
-        alert('Please provide valid ticket prices.');
+    if (!venueMapLink.value) {
+        setError(venueMapLink, document.getElementById('editVenueMapLinkError'), errors.venueMapLink);
+        isValid = false;
+    }
+    if (!eventStatus.value) {
+        setError(eventStatus, document.getElementById('editEventStatusError'), errors.eventStatus);
         isValid = false;
     }
 
     return isValid;
 }
 
+
+function openEditEventModal(id) {
+    const event = events.find(event => event.id === id);
+    if (event) {
+        // Populate basic event details
+        resetEditInputStyles();
+        document.getElementById('editEventId').value = event.id;
+        
+        document.getElementById('editEventName').value = event.eventName;
+        document.getElementById('editEventDescription').value = event.eventDescription;
+
+      // Set the radio button for event type
+    const eventTypeRadios = document.getElementsByName('editEventType');
+    eventTypeRadios.forEach(radio => {
+        console.log(radio.value, event.eventType);
+        if (radio.value === event.eventType) {
+           
+            radio.checked = true;
+        }
+    });
+
+        // Set event date and time
+ // Set the start date and convert to local time
+    const startDateUTC = new Date(event.startDate); // Parse the UTC date
+    const localStartDate = startDateUTC.toISOString().slice(0, 16); // Convert to local format
+    document.getElementById('editStartDate').value = localStartDate;
+
+        // Location details
+        document.getElementById('editVenue').value = event.venue;
+        document.getElementById('editAddress').value = event.address;
+        document.getElementById('editVenueMapLink').value = event.venueDetails.links.maps || '';
+
+        // Organizer details
+        document.getElementById('editOrganizerName').value = event.organizer.name || '';
+
+        // Clear and populate ticket prices
+        const ticketContainer = document.getElementById('editTicketRows');
+        ticketContainer.innerHTML = ''; // Clear previous entriesfdsggfdsfgd
+        console.log(event.ticketPrice);
+        // Check if ticketPrice is an array; if not, initialize it
+      const ticketPrices = event.ticketPrice ?? [];
+        console.log("ticketPrices : ",ticketPrices);
+        ticketPrices.forEach(ticket => {
+            console.log("hello");
+            const row = document.createElement('div');
+            row.className = 'ticket-row'; // Ensure we have a class for styles
+            row.innerHTML = `
+                <input type="text" value="${ticket.type}" placeholder="Ticket Type (e.g., VIP)" class="ticket-type" required />
+                <input type="number" value="${ticket.price}" placeholder="Ticket Price" min="0" class="ticket-price" required />
+                <button type="button" class="remove-ticket" onclick="removeTicketRow(this)">Remove</button>
+            `;
+            ticketContainer.appendChild(row);
+        });
+
+        // Set event status
+        document.getElementById('editEventStatus').value = event.eventStatus;
+        document.getElementById('editVenueProfileLink').value = event.venueDetails.links.venueProfile;
+        // Set venue facilities checkboxes
+        document.querySelectorAll("input[name='editVenueFacilities']").forEach(checkbox => {
+            checkbox.checked = event.venueDetails.facilities.includes(checkbox.value);
+        });
+
+    // Store existing images for future reference
+ /*        currentOrganizerLogo = event.organizer.logo || '';
+        currentEventImage = event.eventImage || ''; */
+
+        openModal('editEventModal');
+    }
+}
+
+
+function deleteEvent(eventId) {
+    // Confirm the deletion
+    if (confirm("Are you sure you want to delete this event?")) {
+        // Remove the event from the events array (assuming you have an array called `events`)
+        const eventIndex = events.findIndex(event => event.id === eventId);
+        if (eventIndex !== -1) {
+            events.splice(eventIndex, 1); // Remove the event
+
+            // Update the UI
+            renderEvents(); // Assuming you have a function that re-renders the event list
+            
+        } else {
+            alert("Event not found.");
+        }
+    }
+}
+
+
 function resetInputStylesEvent() {
-    const inputs = document.querySelectorAll('#eventForm input');
+    const inputs = document.querySelectorAll('#eventForm input, #eventDescription');
     const errorMessages = document.querySelectorAll('.error-message');
 
     inputs.forEach(input => {
         input.classList.remove('input-error'); // Remove error class
     });
 
+    errorMessages.forEach(msg => {
+        msg.style.display = 'none'; // Hide error messages
+    });
+}
+function resetEditInputStyles() {
+    // Select all input elements within the edit event modal
+    const inputs = document.querySelectorAll('#editEventForm input , #editEventDescription');
+    const errorMessages = document.querySelectorAll('.error-message'); // Change class name if necessary
+
+    // Remove error styles from inputs
+    inputs.forEach(input => {
+        input.classList.remove('input-error'); // Remove error class
+    });
+
+    // Hide all error messages
     errorMessages.forEach(msg => {
         msg.style.display = 'none'; // Hide error messages
     });

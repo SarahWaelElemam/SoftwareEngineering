@@ -319,7 +319,7 @@ header h1 {
 .event-image,
 .venue-image {
   width: 50px; /* Adjust size as needed */
-  height: 20px;
+  height: 30px;
   border-radius: 5px; /* Optional, for rounded corners */
 }
 /* Style for action icons (edit and delete) */
