@@ -14,13 +14,14 @@
   <div class="wrapper">
     <div class="content"><footer>
       <div class="footer-container">
-        <div class="footer-left">
-          <h2 class="footer-logo">TixCarte</h2>
-          <ul class="footer-links">
-            <li><a href="#">All Tickets on Sale</a></li>
-            <li><a href="#">Hot Events</a></li>
-          </ul>
-        </div>
+      <div class="footer-left">
+  <img src="logo.png" alt="TixCarte Logo" class="footer-logo" />
+  <ul class="footer-links">
+    <li><a href="#">All Tickets on Sale</a></li>
+    <li><a href="#">Hot Events</a></li>
+  </ul>
+</div>
+
 
         <div class="footer-info">
           <ul>
@@ -44,7 +45,7 @@
           <a href="#"><i class="fab fa-twitter"></i></a>
           <a href="#"><i class="fab fa-tiktok"></i></a>
         </div>
-        <p>&copy; TixCarte.com 2024 - <a href="#">Privacy Policy</a></p>
+        <p>&copy; TickCarte.com 2024 - <a href="#">Privacy Policy</a></p>
       </div>
     </footer></div>
     
