@@ -173,6 +173,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input id="signup-password-confirm" type="password" name="ConfirmPassword" required>
             </div>
             <div class="input-block">
+                <label for="signup-number">Phone Number</label>
+                <input id="signup-number" type="PhoneNumber" name="PhoneNumber" required>
+            </div>
+            <div class="input-block">
                 <label for="signup-government">Choose Government</label>
                 <select id="signup-government" name="Government" required>
                     <option value="" disabled selected>Select your Government</option>
