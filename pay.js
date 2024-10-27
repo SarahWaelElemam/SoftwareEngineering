@@ -13,13 +13,24 @@ const nextButton = document.getElementById('next');
 const prevButton = document.getElementById('prev');
 const SelectTicketSection = document.querySelector('.selectTicket');
 const paymentSection = document.querySelector('.Payment');
+const printSection = document.querySelector('.printing');
 const stepone = document.querySelector(".try");
+const warningModal = document.getElementById('warningModal');
+const closeWarningBtn = document.getElementById('closeWarningBtn');
 
 let selectedSeat = null;  
 let confirmedSeats = [];
 let totalCost = 0;
 let currentStep = 1;
 
+function showWarningModal() {
+    warningModal.style.display = 'block';
+  }
+  
+  // Close the warning modal when OK is clicked
+  closeWarningBtn.addEventListener('click', () => {
+    warningModal.style.display = 'none';
+  });
 function setDefaultView() {
     container1.style.display = 'block'; // Show container 1 by default
     container2.style.display = 'none';  // Hide container 2 by default
@@ -130,6 +141,10 @@ function updateSteps() {
 }
 
 nextButton.addEventListener('click', () => {
+    if (confirmedSeats.length === 0) {
+        showWarningModal(); // Show the warning modal instead of alert
+        return; // Stop the function execution
+    }
     // Check if there are confirmed seats before proceeding
     if (currentStep < 3 ) {
         currentStep++;
@@ -138,12 +153,16 @@ nextButton.addEventListener('click', () => {
         if (currentStep === 2) {
             SelectTicketSection.style.display = 'none';
             paymentSection.style.display = 'block';
+            nextButton.disabled = true;
             stepone.style.display = "none";
         }
         
         prevButton.disabled = false;
         if (currentStep === 3) {
             nextButton.disabled = true;
+            paymentSection.style.display='none';
+            printSection.style.display='flex';
+            stepone.style.display = "none";
         }
     }
 });
@@ -157,7 +176,15 @@ prevButton.addEventListener('click', () => {
         if (currentStep === 1) {
             SelectTicketSection.style.display = 'flex';
             paymentSection.style.display = 'none';
+            printSection.style.display='none';
             stepone.style.display="block";
+            prevButton.disabled = true;
+        }
+        else if (currentStep === 2) {
+            SelectTicketSection.style.display = 'none';
+            paymentSection.style.display = 'block';
+            printSection.style.display='none';
+            stepone.style.display = "none";
             prevButton.disabled = true;
         }
         

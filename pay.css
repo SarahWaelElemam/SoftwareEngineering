@@ -406,8 +406,40 @@ width: 15rem; /* Adjust the width as needed */
   color: #666;
   white-space: nowrap;
 }
+.modall {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-/* Modal Styling */
+.modall-content {
+  background-color: rgb(204, 190, 30);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+#closeWarningBtn {
+  background-color: rgb(207, 207, 9);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#closeWarningBtn:hover {
+  background-color: #000000;
+}
 .modal {
   display: none;
   position: fixed;
@@ -475,7 +507,6 @@ button {
 
 .Payment {
   display: none; /* Initially hidden */
-  margin: 2rem ;
   width: 90%;
   height: 110vh;
   padding: 2rem;
@@ -601,4 +632,191 @@ cursor: pointer;
 
 .btn-cancel:hover {
   background: #c0392b;
+}
+.printing{
+  display: none; /* Initially hidden */
+  margin: 2rem ;
+  width: 90%;
+  height: 110vh;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+.ticket-system {
+  color: #000000;
+  max-width: 385px;
+  align-items: center;
+  justify-content: center;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  
+}
+
+.title {
+  font-weight: normal;
+  text-align: left;
+  margin-left: 20px;
+  margin-bottom: 50px;
+  color: #fff;
+  font-size: 2rem;
+  color: #000000;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.printer {
+  width: 90%;
+  height: 20px;
+  border: 5px solid #a8a7a7;
+  border-radius: 10px;
+  box-shadow: 1px 3px 3px 0px rgba(0, 0, 0, 0.2);
+  color: #000000;
+}
+
+.receipts-wrapper {
+  overflow: hidden;
+  margin-top: -10px;
+  padding-bottom: 10px;
+  width: 90%;
+  color: #000000;
+}
+
+.receipts {
+ width: 90%;
+ display: flex;
+ align-items: center;
+ flex-direction: column;
+ translate: 1rem;
+ transform: translateY(-500px);
+ background-color: #abaaaa98;
+ border-radius: 2rem;
+ transition: transform 0.5s ease; /* Smooth transition */
+ color: #000000;
+
+ &.animate {
+     animation-duration: 2.5s;
+     animation-delay: 500ms;
+     animation-name: print;
+     animation-fill-mode: forwards;
+ }
+}
+
+@keyframes print {
+ 0% { transform: translateY(-500px); }
+ 100% { transform: translateY(0); }
+}
+
+.receipt img{
+  height: 5rem;
+  width: 10rem;
+  position:relative;
+  align-items: center;
+  text-align: center;
+}
+.airliner-logo {
+  max-width: 80px;
+}
+
+.route {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 30px 0;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.plane-icon {
+  width: 30px;
+  height: 30px;
+  transform: rotate(90deg);
+}
+
+.route h4 {
+  font-weight: 300;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 1rem;
+}
+.item p{
+ color: rgba(28, 28, 28, .7);
+ font-weight: 500; 
+}
+.item span {
+ font-size: 2rem;
+ font-family: 'Times New Roman', Times, serif;
+color: orange;
+}
+
+.qr-code {
+  height: 110px;
+  min-height: unset;
+  position: relative;
+  border-radius: 20px 20px 10px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.qr-code::before {
+  content: '';
+  background: linear-gradient(to right, #fff 50%, #e59432 50%);
+  background-size: 22px 4px, 100% 4px;
+  height: 4px;
+  width: 90%;
+  display: block;
+  left: 0;
+  right: 0;
+  top: -1px;
+  position: absolute;
+  margin: auto;
+}
+
+.qr {
+  width: 70px;
+  height: 70px;
+}
+
+.description {
+  margin-left: 20px;
+}
+
+.description h2 {
+  margin: 0 0 5px 0;
+  font-weight: 20;
+}
+
+.description p {
+  margin: 0;
+  font-weight: 400;
+}
+
+@keyframes print {
+  0% {
+      transform: translateY(-510px);
+  }
+  35% {
+      transform: translateY(-395px);
+  }
+  70% {
+      transform: translateY(-140px);
+  }
+  100% {
+      transform: translateY(0);
+  }
 }
