@@ -96,35 +96,49 @@
                         </div>
 
                         <div class="purchase-history">
-            <h3>Purchase History</h3>
-            <table class="purchase-history-table">
-                <thead>
-                    <tr>
-                        <th>Ticket Number</th>
-                        <th>Event Name</th>
-                        <th>Location</th>
-                        <th>Price</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>123456</td>
-                        <td>Concert A</td>
-                        <td>Cairo Stadium</td>
-                        <td>$50</td>
-                        <td>15 Oct 2024</td>
-                    </tr>
-                    <tr>
-                        <td>789012</td>
-                        <td>Festival B</td>
-                        <td>Giza Arena</td>
-                        <td>$75</td>
-                        <td>20 Oct 2024</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <h3>Purchase History</h3>
+    <table class="purchase-history-table">
+        <thead>
+            <tr>
+                <th>Ticket Number</th>
+                <th>Event Name</th>
+                <th>Location</th>
+                <th>Price</th>
+                <th>Date</th>
+                <th>Actions</th> <!-- Add a new column for actions -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>123456</td>
+                <td>Concert A</td>
+                <td>Cairo Stadium</td>
+                <td>$50</td>
+                <td>15 Oct 2024</td>
+                <td>
+                    <button type="button" class="btn reorder-btn" onclick="location.href='events.php'">Reorder</button>
+                    <button type="button" class="btn contact-btn" onclick="location.href='support.php'">Contact for Help</button>
+                    <button type="button" class="btn refund-btn" onclick="location.href='support.php'">Refund</button>
+
+                </td>
+            </tr>
+            <tr>
+                <td>789012</td>
+                <td>Festival B</td>
+                <td>Giza Arena</td>
+                <td>$75</td>
+                <td>20 Oct 2024</td>
+                <td>
+                    <button type="button" class="btn reorder-btn" onclick="location.href='events.php'">Reorder</button>
+                    <button type="button" class="btn contact-btn" onclick="location.href='support.php'">Contact for Help</button>
+                    <button type="button" class="btn refund-btn" onclick="location.href='support.php'">Refund</button>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
 
         <!-- Edit Profile Form (initially hidden) -->
         <div id="edit-form" style="display: none;">
