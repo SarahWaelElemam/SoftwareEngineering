@@ -57,17 +57,28 @@ function handleNavigation() {
 }
 
 // Function to render the ticket list
-function renderTickets() {
+function renderTickets(filteredTickets = tickets) {
     const ticketList = document.getElementById("ticketList");
-    ticketList.innerHTML = "";
+    ticketList.innerHTML = ""; // Clear the list before rendering new tickets
 
-    tickets.forEach(ticket => {
+    filteredTickets.forEach(ticket => {
         const ticketItem = document.createElement("div");
         ticketItem.className = "ticket-item";
         ticketItem.innerHTML = `<h4>${ticket.subject}</h4><p>Status: ${ticket.status}</p>`;
         ticketItem.onclick = () => openTicketModal(ticket);
         ticketList.appendChild(ticketItem);
     });
+}
+
+// Function to filter tickets by status
+function filterTicketsByStatus() {
+    const statusFilter = document.getElementById("ticket-status-filter").value;
+    
+    // If 'all' is selected, display all tickets, otherwise filter based on the status
+    const filteredTickets = statusFilter === 'all' ? tickets : tickets.filter(ticket => ticket.status === statusFilter);
+
+    // Re-render the ticket list with the filtered tickets
+    renderTickets(filteredTickets);
 }
 
 // Function to open the ticket modal
@@ -158,5 +169,7 @@ function confirmStatusUpdate() {
 // Initialize the page and set up navigation
 document.addEventListener('DOMContentLoaded', () => {
     handleNavigation();  // Handle navigation between pages
-    renderTickets();     // Render ticket list
+    renderTickets();     // Render ticket list (all tickets by default)
 });
+
+
