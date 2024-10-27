@@ -144,38 +144,38 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             
             <div class="form-wrapper">
-                <button type="button" class="switcher switcher-signup">
-                    Sign Up
-                    <span class="underline"></span>
-                </button>
-                <form class="form form-signup" method="POST">
-                    <fieldset>
-                        <legend>Please, enter your email, password and password confirmation for sign up.</legend>
-                        <div class="input-block">
-                            <label for="signup-FName">First Name</label>
-                            <input id="signup-FName" type="text" name="FName" required>
-                        </div>
-                        <div class="input-block">
-                            <label for="signup-LName">Last Name</label>
-                            <input id="signup-LName" type="text" name="LName" required>
-                        </div>
-                        <div class="input-block">
-                            <label for="signup-email">E-mail</label>
-                            <input id="signup-email" type="email" name="Email" required>
-                        </div>
-                        <div class="input-block">
-                            <label for="signup-password">Password</label>
-                            <input id="signup-password" type="password" name="Password" required>
-                        </div>
-                        <div class="input-block">
-                            <label for="signup-password-confirm">Confirm password</label>
-                            <input id="signup-password-confirm" type="password" name="ConfirmPassword" required>
-                        </div>
-                        <!-- Dropdown for choosing government -->
-                        <div class="input-block">
-                            <label for="signup-government">Choose Government</label>
-                            <select id="signup-government" name="Government" required>
-                                <option value="" disabled selected>Select your Government</option>
+    <button type="button" class="switcher switcher-signup">
+        Sign Up
+        <span class="underline"></span>
+    </button>
+    <div class="form-container">
+    <form class="form form-signup" method="POST">
+        <fieldset>
+            <legend>Please, enter your details to sign up.</legend>
+            <div class="input-block">
+                <label for="signup-FName">First Name</label>
+                <input id="signup-FName" type="text" name="FName" required>
+            </div>
+            <div class="input-block">
+                <label for="signup-LName">Last Name</label>
+                <input id="signup-LName" type="text" name="LName" required>
+            </div>
+            <div class="input-block">
+                <label for="signup-email">E-mail</label>
+                <input id="signup-email" type="email" name="Email" required>
+            </div>
+            <div class="input-block">
+                <label for="signup-password">Password</label>
+                <input id="signup-password" type="password" name="Password" required>
+            </div>
+            <div class="input-block">
+                <label for="signup-password-confirm">Confirm Password</label>
+                <input id="signup-password-confirm" type="password" name="ConfirmPassword" required>
+            </div>
+            <div class="input-block">
+                <label for="signup-government">Choose Government</label>
+                <select id="signup-government" name="Government" required>
+                    <option value="" disabled selected>Select your Government</option>
                                 <option value="Cairo">Cairo</option>
                                 <option value="Alexandria">Alexandria</option>
                                 <option value="Giza">Giza</option>
@@ -204,13 +204,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 <option value="Suez">Suez</option>
                                 <option value="Port Said">Port Said</option>
                             </select>
-                        </div>
-                    </fieldset>
-                    <input type="hidden" name="formType" value="signup">
-                    <button type="submit" class="btn-signup">Continue</button>
-                </form>
+                            </div>
+            <div class="input-block">
+                <label for="signup-dob">Date of Birth</label>
+                <input id="signup-dob" type="date" name="DOB" required>
             </div>
+            <div class="input-block">
+                <label for="signup-gender">Gender</label>
+                <select id="signup-gender" name="Gender" required>
+                    <option value="" disabled selected>Select your Gender</option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                </select>
+            </div>
+        </fieldset>
+        <input type="hidden" name="formType" value="signup">
+        <button type="submit" class="btn-signup">Continue</button>
+    </form>
+</div>
+</div>
         </div>
+        
     </section>
     <?php include 'Footer.php'; ?>
 <script src="Login_Signup.js"></script>
