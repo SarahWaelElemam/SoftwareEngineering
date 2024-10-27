@@ -3,25 +3,25 @@ include_once "includes/dbh.php";
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Check which form was submitted
     if (isset($_POST["formType"]) && $_POST["formType"] == "signup") {
-        // Capture form data for sign-up
         $Fname = htmlspecialchars(trim($_POST["FName"]));
         $Lname = htmlspecialchars(trim($_POST["LName"]));
-        $Email = strtolower(trim($_POST["Email"])); // Convert email to lowercase
-        $Password = $_POST["Password"]; // Password will be saved as integer
-        $ConfirmPassword = $_POST["ConfirmPassword"]; // FIXED: Now correctly using ConfirmPassword
+        $Email = strtolower(trim($_POST["Email"]));
+        $Password = $_POST["Password"];
+        $ConfirmPassword = $_POST["ConfirmPassword"];
         $Government = htmlspecialchars(trim($_POST["Government"]));
+        $PhoneNumber = intval(trim($_POST["PhoneNumber"])); // Cast to integer
+        $Gender = htmlspecialchars(trim($_POST["Gender"]));
+        $DOB = htmlspecialchars(trim($_POST["DOB"]));
 
-        // Check if all fields are filled
-        if (!empty($Fname) && !empty($Lname) && !empty($Email) && !empty($Password) && !empty($ConfirmPassword) && !empty($Government)) {
-            // Check if passwords match
+        if (!empty($Fname) && !empty($Lname) && !empty($Email) && !empty($Password) && !empty($ConfirmPassword) && 
+            !empty($Government) && !empty($PhoneNumber) && !empty($Gender) && !empty($DOB)) {
+
             if ($Password !== $ConfirmPassword) {
                 echo "<script>alert('Passwords do not match!');</script>";
             } elseif (!is_numeric($Password)) {
-                echo "<script>alert('Password must be numeric!');</script>"; // Ensure password is numeric
+                echo "<script>alert('Password must be numeric!');</script>";
             } else {
-                // Check if email already exists
                 $checkEmail = $conn->prepare("SELECT Email FROM users WHERE Email = ?");
                 $checkEmail->bind_param("s", $Email);
                 $checkEmail->execute();
@@ -30,10 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($result->num_rows > 0) {
                     echo "<script>alert('Email already exists!');</script>";
                 } else {
-                    // Insert into database, casting password as integer
-                    $stmt = $conn->prepare("INSERT INTO users (FirstName, LastName, Email, Password, Government) VALUES (?, ?, ?, ?, ?)");
+                    $stmt = $conn->prepare("INSERT INTO users (FirstName, LastName, Email, Password, Government, PhoneNumber, Gender, DateOfBirth) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                     if ($stmt) {
-                        $stmt->bind_param("sssis", $Fname, $Lname, $Email, $Password, $Government);
+                        $stmt->bind_param("sssissis", $Fname, $Lname, $Email, $Password, $Government, $PhoneNumber, $Gender, $DOB);
 
                         if ($stmt->execute()) {
                             $_SESSION["ID"] = $conn->insert_id;
@@ -41,6 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION["LName"] = $Lname;
                             $_SESSION["Email"] = $Email;
                             $_SESSION["Government"] = $Government;
+                            $_SESSION["PhoneNumber"] = $PhoneNumber;
+                            $_SESSION["Gender"] = $Gender;
+                            $_SESSION["DOB"] = $DOB;
                             
                             header("Location: index.php");
                             exit();
@@ -58,17 +60,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<script>alert('Please fill in all fields!');</script>";
         }
     } elseif (isset($_POST["formType"]) && $_POST["formType"] == "login") {
-        // Capture form data for login
-        $Email = strtolower(trim($_POST["Email"])); // Convert email to lowercase
-        $Password = $_POST["Password"]; // Password will be compared as integer
+        $Email = strtolower(trim($_POST["Email"]));
+        $Password = $_POST["Password"];
     
-        // Ensure both fields are filled
         if (!empty($Email) && !empty($Password)) {
-            // Ensure password is numeric
             if (!is_numeric($Password)) {
                 echo "<script>alert('Password must be numeric!');</script>";
             } else {
-                // Find user by email
                 $stmt = $conn->prepare("SELECT * FROM users WHERE Email = ?");
                 if ($stmt) {
                     $stmt->bind_param("s", $Email);
@@ -76,14 +74,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $result = $stmt->get_result();
     
                     if ($row = $result->fetch_assoc()) {
-                        // Compare the numeric password directly
                         if ((int)$Password === (int)$row['Password']) {
-                            // Set session variables
                             $_SESSION["ID"] = $row["ID"];
                             $_SESSION["FName"] = $row["FirstName"];
                             $_SESSION["LName"] = $row["LastName"];
                             $_SESSION["Email"] = $row["Email"];
                             $_SESSION["Government"] = $row["Government"];
+                            $_SESSION["PhoneNumber"] = $row["PhoneNumber"];
+                            $_SESSION["Gender"] = $row["Gender"];
+                            $_SESSION["DOB"] = $row["DateOfBirth"];
     
                             header("Location: index.php");
                             exit();
@@ -105,6 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
+
   <?php include 'NavBar.php'; ?>
 
 <!DOCTYPE html>
