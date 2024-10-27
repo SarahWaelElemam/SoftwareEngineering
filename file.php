@@ -25,6 +25,36 @@
       <section class="contactus main_content">
         <h2 class="h2-mb">Contact Us</h2>
 
+        <?php
+          if ($_SERVER["REQUEST_METHOD"] == "POST") {
+              // Collect and sanitize form data
+              $first_name = htmlspecialchars(trim($_POST["first_name"]));
+              $last_name = htmlspecialchars(trim($_POST["last_name"]));
+              $email = htmlspecialchars(trim($_POST["email"]));
+              $prefix = htmlspecialchars(trim($_POST["prefix"]));
+              $phone = htmlspecialchars(trim($_POST["phone"]));
+              $message = htmlspecialchars(trim($_POST["message"]));
+              $agree_privacy = isset($_POST["agree_privacy"]) ? $_POST["agree_privacy"] : "";
+
+              // Simple validation
+              if (!empty($first_name) && !empty($last_name) && !empty($email) && !empty($phone) && !empty($message) && !empty($agree_privacy)) {
+                  // Process the form data (e.g., send an email or store in database)
+                  $to = "support@ticketsmarche.com"; // Your email address
+                  $subject = "Contact Us Form Submission";
+                  $body = "Name: $first_name $last_name\nEmail: $email\nPhone: $prefix $phone\nMessage:\n$message";
+                  $headers = "From: $email";
+
+                  if (mail($to, $subject, $body, $headers)) {
+                      echo "<div class='alert alert-success'>Your message has been sent successfully!</div>";
+                  } else {
+                      echo "<div class='alert alert-danger'>There was an error sending your message. Please try again.</div>";
+                  }
+              } else {
+                  echo "<div class='alert alert-danger'>All fields are required. Please complete the form.</div>";
+              }
+          }
+        ?>
+
         <div class="row mb-3" style="margin: 0">
           <div class="col-xs-12" style="padding: 0">
             <div class="row" style="margin: 0">
@@ -35,35 +65,17 @@
                 <p class="opening-time body-4-regular">
                   10am - 10pm / Everyday
                 </p>
-                <div
-                  class="d-flex justify-content-start align-content-center flex-column flex-md-row call-icon"
-                >
+                <div class="d-flex justify-content-start align-content-center flex-column flex-md-row call-icon">
                   <div class="align-self-center">
                     <span class="type-contacts-icon1 the_icon">
-                      <svg
-                        width="25"
-                        height="25"
-                        viewBox="0 0 25 25"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M14.7333 6.36361C15.7323 6.55851 16.6503 7.04706 17.37 7.76673C18.0896 8.4864 18.5782 9.40445 18.7731 10.4034M14.7333 2.27271C16.8087 2.50326 18.744 3.43266 20.2215 4.90828C21.699 6.3839 22.6308 8.31806 22.864 10.3932M10.8234 14.4054C9.59452 13.1765 8.62417 11.787 7.91236 10.3044C7.85113 10.1769 7.82052 10.1131 7.797 10.0324C7.71341 9.74572 7.77345 9.39364 7.94733 9.15081C7.99625 9.08248 8.05471 9.02403 8.17162 8.90712C8.52917 8.54956 8.70795 8.37079 8.82483 8.19102C9.26562 7.51306 9.26562 6.63906 8.82483 5.9611C8.70795 5.78133 8.52917 5.60255 8.17162 5.245L7.97232 5.0457C7.4288 4.50218 7.15704 4.23042 6.86517 4.0828C6.28471 3.7892 5.59921 3.7892 5.01875 4.0828C4.72689 4.23042 4.45513 4.50218 3.91161 5.0457L3.75039 5.20692C3.20873 5.74858 2.9379 6.01941 2.73106 6.38762C2.50153 6.79621 2.3365 7.4308 2.3379 7.89944C2.33916 8.32177 2.42108 8.61041 2.58493 9.18768C3.46547 12.29 5.12686 15.2174 7.56911 17.6597C10.0114 20.1019 12.9388 21.7633 16.0411 22.6439C16.6184 22.8077 16.907 22.8896 17.3294 22.8909C17.798 22.8923 18.4326 22.7273 18.8412 22.4977C19.2094 22.2909 19.4802 22.0201 20.0219 21.4784L20.1831 21.3172C20.7266 20.7737 20.9984 20.5019 21.146 20.21C21.4396 19.6296 21.4396 18.9441 21.146 18.3636C20.9984 18.0718 20.7266 17.8 20.1831 17.2565L19.9838 17.0572C19.6262 16.6996 19.4475 16.5209 19.2677 16.404C18.5897 15.9632 17.7157 15.9632 17.0378 16.404C16.858 16.5209 16.6792 16.6996 16.3217 17.0572C16.2048 17.1741 16.1463 17.2325 16.078 17.2815C15.8352 17.4553 15.4831 17.5154 15.1964 17.4318C15.1157 17.4083 15.0519 17.3777 14.9244 17.3164C13.4418 16.6046 12.0523 15.6343 10.8234 14.4054Z"
-                          stroke="black"
-                          stroke-width="1.63636"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        ></path>
-                      </svg>
+                      <i class="fas fa-phone"></i>
                     </span>
                   </div>
                   <div class="align-self-center phone body-4-regular">
                     16826 / +202 2463 7000
                   </div>
                 </div>
-                <div
-                  class="d-flex justify-content-start align-content-center flex-column flex-md-row call-icon"
-                >
+                <div class="d-flex justify-content-start align-content-center flex-column flex-md-row call-icon">
                   <div class="align-self-center">
                     <span class="type-contacts-icon2 the_icon">
                       <i class="fab fa-whatsapp"></i>
@@ -81,7 +93,7 @@
                   name="contactus"
                   id="contactus"
                   method="POST"
-                  action="/contact-us"
+                  action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
                   class="needs-validation"
                 >
                   <h2 class="h2-mb">How can we help ?</h2>
@@ -92,7 +104,6 @@
                         type="text"
                         name="first_name"
                         id="first_name"
-                        value=""
                         class="form-control body-5 form_input_text"
                         placeholder="First Name"
                         aria-label="First Name"
@@ -104,7 +115,6 @@
                         type="text"
                         name="last_name"
                         id="last_name"
-                        value=""
                         class="form-control body-5 form_input_text"
                         placeholder="Last Name"
                         aria-label="Last Name"
@@ -118,7 +128,6 @@
                         type="email"
                         name="email"
                         id="email"
-                        value=""
                         class="form-control body-5 form_input_text"
                         placeholder="Email"
                         required
@@ -131,9 +140,7 @@
                         type="text"
                         name="prefix"
                         id="prefix"
-                        value=""
                         class="form-control body-5 form_input_text"
-                        vlue="+20"
                         placeholder="+20"
                         aria-label="+20"
                         required
@@ -144,7 +151,6 @@
                         type="number"
                         name="phone"
                         id="phone"
-                        value=""
                         class="form-control body-5 form_input_text"
                         placeholder="Phone Number"
                         aria-label="Phone Number"
@@ -175,12 +181,11 @@
                         name="agree_privacy"
                         id="agree_privacy"
                         value="privacy"
-                        style="font-size: 24px; margin-top: 0"
                         required
                       />
-                      <label class="form-check-label body-6" for="inlineRadio1"
-                        >I agree with a privacy policy</label
-                      >
+                      <label class="form-check-label body-6" for="inlineRadio1">
+                        I agree with a privacy policy
+                      </label>
                     </div>
                     <div>
                       <button

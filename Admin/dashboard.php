@@ -13,6 +13,12 @@
   </head>
 
   <body>
+    <?php
+      // Include any PHP for session handling, database connection, etc.
+      // session_start();
+      // require 'path/to/database/connection.php';
+    ?>
+
     <!-- Sidebar -->
     <div class="sidebar">
       <div class="logo">
@@ -43,7 +49,8 @@
                       Earnings (Monthly)
                     </div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      $40,000
+                      <!-- Dynamic earnings data -->
+                      <?php echo "$40,000"; ?>
                     </div>
                   </div>
                   <div class="col-auto">
@@ -54,7 +61,7 @@
             </div>
           </div>
 
-          <!-- Earnings (Monthly) Card Example -->
+          <!-- Earnings (Annual) Card Example -->
           <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-success shadow h-100 py-2">
               <div class="card-body">
@@ -66,7 +73,7 @@
                       Earnings (Annual)
                     </div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                      $215,000
+                      <?php echo "$215,000"; ?>
                     </div>
                   </div>
                   <div class="col-auto">
@@ -77,7 +84,7 @@
             </div>
           </div>
 
-          <!-- Earnings (Monthly) Card Example -->
+          <!-- Tasks Card Example -->
           <div class="col-xl-3 col-md-6 mb-4">
             <div class="card border-left-info shadow h-100 py-2">
               <div class="card-body">
@@ -93,7 +100,7 @@
                         <div
                           class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
                         >
-                          50%
+                          <?php echo "50%"; ?>
                         </div>
                       </div>
                       <div class="col">
@@ -129,7 +136,9 @@
                     >
                       Pending Requests
                     </div>
-                    <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <?php echo "18"; ?>
+                    </div>
                   </div>
                   <div class="col-auto">
                     <i class="fas fa-comments fa-2x text-gray-300"></i>
