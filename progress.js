@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function() {
     const circles = document.querySelectorAll('.circle');
-    const progressBars = document.querySelectorAll('.progress-bar .indicator');
+    const progressBars = document.querySelectorAll('.progress-bar');
     const prevButton = document.getElementById('prev');
     const nextButton = document.getElementById('next');
-    
+
     let currentActive = 1;
     const totalSteps = circles.length;
 
@@ -19,10 +19,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Update progress bars
         progressBars.forEach((bar, index) => {
+            const indicator = bar.querySelector('.indicator');
             if (index < currentActive - 1) {
-                bar.style.height = '100%';
+                indicator.style.height = '100%'; // Fully fill the previous progress bars
+                bar.style.height = '1rem'; // Set height for filled bars
+            } else if (index === currentActive - 1) {
+                indicator.style.height = '100%'; // Fill the current progress bar
+                bar.style.height = '7rem'; // Set height for the active bar
             } else {
-                bar.style.height = '0%';
+                indicator.style.height = '0%'; // Hide the future progress bars
+                bar.style.height = '1rem'; // Set default height for future bars
             }
         });
 
@@ -44,4 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateStepper();
         }
     });
+
+    // Initialize the stepper on page load
+    updateStepper();
 });
