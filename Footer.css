@@ -48,6 +48,7 @@ margin: 0;
 display: flex;
 flex-direction: column;
 gap: 5px;
+translate: 5rem -5.2rem;
 }
 
 .footer-links li {
@@ -91,8 +92,8 @@ padding: 0 20px;
 
 .footer-help a {
   line-height: 1.5;
-  background-color: #f9f9f9;
-  border: 1px solid #000;
+  background-color: #ffcd0373;
+  border-color: transparent;
   border-radius: 20px;
   padding: 10px 30px;
   text-decoration: none;
@@ -101,6 +102,7 @@ padding: 0 20px;
 }
 
 .footer-help a:hover {
+  color: white;
   background-color: #ffcb10;
 }
 
@@ -138,13 +140,36 @@ padding: 0 20px;
 }
 .footer-bottom p {
   margin: 0 20px;
+  text-align: center;
 }
 
 .footer-bottom a {
   color: #000;
   text-decoration: none;
 }
-
+a {
+  position: relative; /* Needed for positioning the pseudo-element */
+  color: inherit; /* Inherit color from parent */
+  text-decoration: none; /* Remove default underline */
+}
+a::after {
+  content: ''; /* Create an empty pseudo-element */
+  position: absolute; /* Position it absolutely */
+  left: 0; /* Start from the left */
+  bottom: 0; /* Position it at the bottom of the text */
+  height: 2px; /* Height of the underline */
+  width: 100%; /* Full width */
+  background-color: #ffab03; /* Color of the underline */
+  transform: scaleX(0); /* Start with no width */
+  transition: transform 0.3s ease; /* Transition effect */
+}
+a:hover{
+  color:#ffab03;
+}
+a:hover::after {
+  
+  transform: scaleX(1); /* Expand to full width on hover */
+}
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
   .footer-container {
@@ -196,8 +221,16 @@ padding: 0 20px;
     margin-top: 10px;
   }
 
-  .footer-bottom {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+  .footer-bottom p{
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    height: 100vh; /* Takes full viewport height */
+    text-align: center;
+    font-family: Arial, sans-serif; /* Optional: Sets a font */
+    font-size: 1rem; /* Adjust font size as needed */
+    background-color: #f1f1f1; /* Optional: Add background color */
+    margin-left: 50rem;
+}
+
 }
