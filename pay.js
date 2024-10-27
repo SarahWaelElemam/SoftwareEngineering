@@ -9,80 +9,38 @@ const seatInfo = document.getElementById('seatInfo');
 const seatPrice = document.getElementById('seatPrice');
 const confirmBtn = document.getElementById('confirmBtn');
 const cancelBtn = document.getElementById('cancelBtn');
-const nextBtn = document.getElementById('next');
-const prevBtn = document.getElementById('prev');
-const stepsCircles = document.querySelectorAll('.circle');
-let selectedSeat = null;  // To store the seat that was clicked
+const nextButton = document.getElementById('next');
+const prevButton = document.getElementById('prev');
+const SelectTicketSection = document.querySelector('.selectTicket');
+const paymentSection = document.querySelector('.Payment');
+const stepone = document.querySelector(".try");
+const warningModal = document.getElementById('warningModal');
+const closeWarningBtn = document.getElementById('closeWarningBtn');
 
-// Ensure confirmedSeats and totalCost are properly updated
-let confirmedSeats = []; // This should be updated with selected seats
-let totalCost = 0; // This should be updated with the actual cost based on selected seats
+let selectedSeat = null;  
+let confirmedSeats = [];
+let totalCost = 0;
+let currentStep = 1;
 
-const step2Content = () => `
-  <div class="review-checkout">
-    <h3>Review and Checkout</h3>
-    <p>Seats: ${confirmedSeats.length > 0 ? confirmedSeats.join(", ") : "No seats selected"}</p>
-    <p>Total: ${totalCost > 0 ? totalCost + ' LE' : 'Free'}</p>
-    <div class="payment-methods">
-      <h3>Payment Method</h3>
-      <label>
-        <input type="radio" name="payment" value="credit-card" checked> Credit Card
-      </label><br>
-      <label>
-        <input type="radio" name="payment" value="valu"> Valu
-      </label>
-    </div>
-    <h3>Ticket Delivery</h3>
-    <label>
-      <input type="radio" name="delivery" value="email" checked> Email Tickets
-    </label>
-  </div>
-`;
 
-function showStep2() {
-    // Hide seat selection UI
-    document.querySelector('.selectTicket').style.display = 'none';
-    
-    // Display payment methods and ticket delivery option
-    const infoDiv = document.querySelector('.info');
-    
-    // Clear existing content in infoDiv (if necessary)
-    infoDiv.innerHTML = '';
-    
-    // Ensure that the seats and total cost are updated before rendering
-    if (confirmedSeats.length > 0 && totalCost > 0) {
-      infoDiv.innerHTML = step2Content();
-    } else {
-      // This is a fallback in case the values are not populated correctly
-      console.warn("No seats selected or total cost not calculated.");
-      infoDiv.innerHTML = `<p>Please select your seats and confirm total cost.</p>`;
-    }
 
-    // Update progress step to step 2
-    stepsCircles[0].classList.remove('active');
-    stepsCircles[1].classList.add('active');
-    
-    // Disable Next button for final step and enable Previous button
-    nextBtn.disabled = true;
-    prevBtn.disabled = false;
+
+
+function showWarningModal() {
+  warningModal.style.display = 'block';
 }
 
-// Event listener for Next button to progress to step 2
-nextBtn.addEventListener('click', showStep2);
-
-// Example of updating confirmedSeats and totalCost
-// These lines should be run after seat selection is made
-
+// Close the warning modal when OK is clicked
+closeWarningBtn.addEventListener('click', () => {
+  warningModal.style.display = 'none';
+});
 
 
 
-
-
-
-// Function to set default view (Container 1 visible)
 function setDefaultView() {
     container1.style.display = 'block'; // Show container 1 by default
     container2.style.display = 'none';  // Hide container 2 by default
+    paymentSection.style.display = 'none'; // Hide payment section by default
 }
 
 // Function to toggle to Container 1
@@ -120,14 +78,11 @@ function openSeatModal(seat, rowIndex, seatIndex) {
     modal.style.display = 'block';
 }
 
-
-
 // Function to close the modal
 function closeSeatModal() {
     modal.style.display = 'none';
 }
 
-// Function to confirm seat selection
 function confirmSeat() {
     // Extract seat details
     const seatText = seatInfo.textContent;
@@ -142,9 +97,25 @@ function confirmSeat() {
     // Update total cost
     totalCost += seatCost;
 
-    // Update the display of confirmed seats and total cost
-    const confirmedSeatsDisplay = document.querySelector('.circle-wrapper span'); // Selector for showing seat info
-    confirmedSeatsDisplay.textContent = `Seats: ${confirmedSeats.join(", ")}, Total: ${totalCost} LE`;
+    // Update the display of total cost
+    const totalCostDisplay = document.getElementById('totalCostDisplay');
+    totalCostDisplay.textContent = `Total: ${totalCost} LE`;
+
+    // Update the display of selected seats
+    const selectedSeatsDisplay = document.getElementById('selectedSeatsDisplay');
+    
+    // Create separate div elements for each seat
+    selectedSeatsDisplay.innerHTML = confirmedSeats.map(seat => 
+        `<div>${seat}</div>`
+    ).join('');
+
+    // Update the payment summary
+    const paymentSeatsDisplay = document.getElementById('paymentSeatsDisplay');
+    const paymentTotalDisplay = document.getElementById('paymentTotalDisplay');
+    
+    // Update payment summary with selected seats and total amount
+    paymentSeatsDisplay.textContent = confirmedSeats.map(seat => `[${seat}]`).join(', ');
+    paymentTotalDisplay.textContent = `${totalCost} LE`;
 
     // Mark the seat as selected and disable further selection
     selectedSeat.classList.add('selected');
@@ -154,7 +125,73 @@ function confirmSeat() {
     closeSeatModal();
 }
 
-// Attach click event to seats to open the modal
+function updateSteps() {
+    const circles = document.querySelectorAll('.circle');
+    const progressBars = document.querySelectorAll('.progress-bar');
+    
+    circles.forEach((circle, idx) => {
+        if (idx < currentStep) {
+            circle.classList.add('active');
+        } else {
+            circle.classList.remove('active');
+        }
+    });
+    
+    progressBars.forEach((bar, idx) => {
+        if (idx < currentStep - 1) {
+            bar.classList.add('active');
+        } else {
+            bar.classList.remove('active');
+        }
+    });
+}
+
+nextButton.addEventListener('click', () => {
+  // Check if there are confirmed seats before proceeding
+  if (confirmedSeats.length === 0) {
+      showWarningModal(); // Show the warning modal instead of alert
+      return; // Stop the function execution
+  }
+
+  if (currentStep < 3) {
+      // Only increment currentStep when seats have been confirmed
+      if (confirmedSeats.length > 0) {
+          currentStep++;
+          updateSteps();
+
+          if (currentStep === 2) {
+              SelectTicketSection.style.display = 'none';
+              paymentSection.style.display = 'block';
+              stepone.style.display = "none";
+          }
+
+          prevButton.disabled = false;
+          if (currentStep === 3) {
+              nextButton.disabled = true;
+          }
+      }
+  }
+});
+
+
+
+// Handle previous button click
+prevButton.addEventListener('click', () => {
+    if (currentStep > 1) {
+        currentStep--;
+        updateSteps();
+        
+        if (currentStep === 1) {
+            SelectTicketSection.style.display = 'flex';
+            paymentSection.style.display = 'none';
+            stepone.style.display="block";
+            prevButton.disabled = true;
+        }
+        
+        nextButton.disabled = false;
+    }
+});
+
 seats.forEach((seat, index) => {
     seat.addEventListener('click', (event) => {
         if (!seat.classList.contains("sold")) {
@@ -180,5 +217,14 @@ window.onclick = function(event) {
 window.onload = function() {
     console.log('Page loaded, setting default view');
     setDefaultView();
+    prevButton.disabled = true;
+    updateSteps();
 };
 
+// Update the display of selected seats
+const selectedSeatsDisplay = document.getElementById('selectedSeatsDisplay');
+
+// Create separate div elements for each seat
+selectedSeatsDisplay.innerHTML = confirmedSeats.map(seat => 
+    `<div>${seat}</div>`
+).join('');

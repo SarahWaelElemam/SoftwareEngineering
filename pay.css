@@ -13,23 +13,22 @@ body {
   box-sizing: border-box;
   width: 100%;
 }
-.checkout{
-    display: flex; 
-    flex-direction: row; 
-    height: 120vh;
-    justify-content: space-between;
+.checkout {
+  display: flex; 
+  flex-direction: row; 
+  height: 120vh;
+  justify-content: space-between;
 }
+
 .selectTicket {
   position: relative;
   padding: 20px;
   height: 110vh;
-    display: flex; 
-    flex-direction: row; 
-    
+  display: flex; 
+  flex-direction: row; 
 }
 
 .info {
-
   display: flex;
   flex-direction: column; 
   align-items: flex-start; 
@@ -40,7 +39,6 @@ body {
   margin: 3rem;
   width: 22rem; 
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
-  
 }
 
 .info .details {
@@ -51,9 +49,11 @@ body {
   color: black;
   font-family: 'Times New Roman', Times, serif;
 }
-.info .details .name{
-font-size: 1.75rem;
+
+.info .details .name {
+  font-size: 1.75rem;
 }
+
 .info img {
   margin-bottom: 1rem;
   width: 20rem;
@@ -73,9 +73,11 @@ font-size: 1.75rem;
   cursor: pointer;
   user-select: none;
 }
+
 .seat:focus {
   outline: none; /* Remove focus outline */
 }
+
 .seat.selected {
   background-color: #f4c140;
 }
@@ -94,6 +96,7 @@ font-size: 1.75rem;
   white-space: nowrap; /* Prevent text from wrapping */
   z-index: 10; /* Ensure it appears above other elements */
 }
+
 #container1 {
   display: block; /* Show this by default */
 }
@@ -101,11 +104,12 @@ font-size: 1.75rem;
 #container2 {
   display: none; /* Hide this by default */
 }
+
 #container1 .seat:nth-of-type(4) {
   margin-right: 35px;
 }
 
-#container1 .seat:nth-of-type(12) {
+#container1 .seat:nth-of-type( 12) {
   margin-right: 18px;
 }
 
@@ -189,12 +193,11 @@ button.active {
   justify-content: center;
 }
 
-
 .allrows {
   margin-top: 100px;
   position: relative;
   padding: 40px;
-  border: 4px solid brown;
+  border : 4px solid brown;
   border-radius: 50%;
   border-bottom: none;
   border-left: none;
@@ -217,6 +220,7 @@ button.active {
 #container2 .row:nth-of-type(4) {
   margin-top: 20px;
 }
+
 .stepper-wrapper {
   display: flex;
   justify-content: center;
@@ -276,10 +280,81 @@ button.active {
 
 .containerr .steps .progress-bar {
   position: relative;
-  height: 60px;
+  height: 1rem;
   width: 4px;
   background-color: #e0e0e0;
   margin-left: 1.5rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.containerr .steps .progress-bar.active {
+  height: 7rem; /* Set height to 5rem for the active progress bar */
+  background-color: #f4c140; /* Optional: Change color for active state */
+}
+
+.selected-seats-display {
+  margin-left: 10px;
+  color: black;
+  font-size: 16px;
+  font-family: 'Times New Roman', Times, serif;
+  display: inline-block; 
+  flex-direction: row;
+  white-space: nowrap;  /* Prevents wrapping to new line */
+  align-items: center;  /* Vertically centers items */
+  gap: 5px;       
+  width: 100%; /* Ensure it takes full width of its container */
+}
+
+.selected-seats-display > * {
+  display: block;         /* Makes each selection take its own line */
+  width: 50%;           /* Takes full width of container */
+  padding: 0.8rem;   
+  background-color: #fddf95;
+  border: 0.02rem solid orange; 
+  border-radius: 1.5rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.2rem;
+}
+
+#selectedSeatsDisplay::-webkit-scrollbar {
+  width: 8px;
+}
+
+#selectedSeatsDisplay::-webkit-scrollbar-track {
+  background: #e9e9ea;
+  border-radius: 10px;
+}
+
+#selectedSeatsDisplay::-webkit-scrollbar-thumb {
+  background: #f4c140;
+  height: 8px !important; /* Make it perfectly square */
+  width: 8px !important;
+  border-radius: 50%; /* Make it perfectly circular */
+  border: 2px solid #e0e0e0;
+}
+
+#selectedSeatsDisplay::-webkit-scrollbar-thumb:hover {
+  background: #fddf95;
+}
+
+#selectedSeatsDisplay {
+  scrollbar-width:initial;
+  scrollbar-color: #f4c140 #e0e0e0;
+  max-height: 100px; /* Set a maximum height */
+  overflow-y: auto;  /* Enable vertical scrollbar when content exceeds max height */
+  padding: 10px; /* Optional: Add some padding */
+  margin-top: 10px; /* Optional: Add some margin */
+width: 15rem; /* Adjust the width as needed */
+  padding-right: 15px;
+}
+
+.total-cost-display {
+  color: black; /* Ensure the text is visible */
+  font-size: 1.7rem; /* Adjust font size as needed */
+  font-family: 'Times New Roman', Times, serif; /* Match the font style */
+  text-align: center;
+  translate: 0rem -1.5rem;
 }
 
 .containerr .steps .progress-bar .indicator {
@@ -289,7 +364,6 @@ button.active {
   background-color: #f4c140;
   transition: height 0.3s ease;
 }
-
 
 .containerr .buttons {
   display: flex;
@@ -332,6 +406,7 @@ button.active {
   color: #666;
   white-space: nowrap;
 }
+
 /* Modal Styling */
 .modal {
   display: none;
@@ -342,18 +417,43 @@ button.active {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.57);
 }
 
 .modal-content {
   background-color: #fefefe;
   margin: 15% auto;
-  padding: 20px;
+  padding: 2rem;
   border: 1px solid #888;
   width: 300px;
   text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  border-radius: 1rem;
+
+  
 }
-/* Text for seat details */
+.modal #confirmBtn{
+  color: white;
+  background-color: #f4c140bd;
+  border-color: #f4c140bd;
+  border-radius: 1rem;
+}
+
+.modal #cancelBtn{
+  color: white;
+  background-color: #f4c140bd;
+  border-color: #f4c140bd;
+  border-radius: 1rem;
+}
+.modal #confirmBtn:hover{
+  color: white;
+  background-color: #fabf2a;
+}
+
+.modal #cancelBtn:hover{
+  color: white;
+  background-color: #f4c140;
+}
 #seatInfo, #seatPrice {
   font-size: 16px;
   margin-bottom: 15px; /* Add space between text and buttons */
@@ -365,6 +465,7 @@ button {
   margin: 5px;
   cursor: pointer;
 }
+
 .circle-wrapper span {
   display: block;
   font-size: 25px;
@@ -372,65 +473,172 @@ button {
   color: black;  /* Ensure text color is visible */
 }
 
-
-
-.review-checkout {
-  padding: 20px;
-  border: 1px solid #ddd;
-  background-color: #f9f9f9;
-  margin-top: 20px;
+.Payment {
+  display: none; /* Initially hidden */
+  margin: 2rem ;
+  width: 90%;
+  height: 110vh;
+  padding: 2rem;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
-.payment-methods {
-  margin-bottom: 15px;
+.payment-header {
+  text-align: left;
+  margin-bottom: 2rem;
+  color: #242333;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.5rem;
 }
 
-.buttons {
+.payment-summary {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+  color: #242333;
+}
+.payment-summary h3{
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  color: #000000;
+  font-family: 'Times New Roman', Times, serif;
+}
+.payment-summary p{
+  margin-bottom: 1.3rem;
+  font-size: 1rem;
+  color: #ff9d00;
+  font-family: 'Times New Roman', Times, serif;
+}
+.payment-summary span{
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+  color: #000000;
+  font-family: 'Times New Roman', Times, serif;
+}
+.payment-form {
   display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
+  flex-direction: column;
+  gap: 1.5rem;
+  color: #242333;
 }
 
-.buttons button {
-  padding: 10px 20px;
-  background-color: #008cba;
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #242333;
+  margin: 1.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #333;
+}
+
+.form-group input {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.card-details {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.payment-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.payment-method {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+.payment-method img{
+  width: 3rem;
+  height: 1rem;
+}
+.payment-method label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.btn-pay {
+  padding: 0.8rem 2rem;
+  background: #2ecc71;
   color: white;
   border: none;
+  border-radius: 4px;
+cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s;
+}
+
+.btn-pay:hover {
+  background: #27ae60;
+}
+
+.btn-cancel {
+  padding: 0.8rem 2rem;
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1rem;
+  transition: background 0.3s;
 }
 
-.buttons button:disabled {
-  background-color: #ddd;
-  cursor: not-allowed;
-}
-h3{
-  color:black;
-}
-label {
-  color: black;
-  font-weight: bold; /* Optional: Makes the text bold for better visibility */
-}
-.review-checkout {
-  color: black;
+.btn-cancel:hover {
+  background: #c0392b;
 }
 
 
 
 
 
+/* Modal styles */
+.modall {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
+.modall-content {
+  background-color: rgb(204, 190, 30);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 300px;
+  text-align: center;
+  border-radius: 10px;
+}
 
+#closeWarningBtn {
+  background-color: rgb(207, 207, 9);
+  color: white;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
+#closeWarningBtn:hover {
+  background-color: #000000;
+}

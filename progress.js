@@ -32,11 +32,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     nextButton.addEventListener('click', () => {
-        if (currentActive < totalSteps) {
+        // Update step only if confirmedSeats is not empty
+        if (currentActive < totalSteps && confirmedSeats.length > 0) {
             currentActive++;
             updateStepper();
+        } else if (confirmedSeats.length === 0) {
+            showWarningModal(); // Show warning if no seats are selected
         }
     });
+    
 
     prevButton.addEventListener('click', () => {
         if (currentActive > 1) {
