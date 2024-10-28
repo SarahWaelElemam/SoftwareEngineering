@@ -258,7 +258,7 @@
   <!-- Add Event Modal -->
 <div id="addEventModal" class="modal-overlay">
     <div class="modal-content">
-        <span class="modal-close" onclick="closeModal('addEventModal')">&times;</span>
+        <span class="modal-close" onclick="closeModals('addEventModal')">&times;</span>
         <h2>Add New Event</h2>
         <form id="eventForm" onsubmit="return handleAddEvent(event)">
 
@@ -391,7 +391,7 @@
 <!-- Edit Event Modal -->
 <div id="editEventModal" class="modal-overlay">
     <div class="modal-content">
-        <span class="modal-close" onclick="closeModal('editEventModal')">&times;</span>
+        <span class="modal-close" onclick="closeModals('editEventModal')">&times;</span>
         <h2>Edit Event</h2>
         <form id="editEventForm" onsubmit="return handleEditEvent(event)">
 
@@ -852,7 +852,7 @@ function handleAddEvent(event) {
 
     events.push(newEvent);
     renderEvents();
-    closeModal('addEventModal');
+    closeModals('addEventModal');
     document.getElementById('eventForm').reset();
 }
 
@@ -959,7 +959,7 @@ if (!validateEditEventForm()) {
 
     // Refresh the event list and close modal
     renderEvents();
-    closeModal('editEventModal');
+    closeModals('editEventModal');
     document.getElementById('editEventForm').reset();
 }
 
@@ -1435,7 +1435,7 @@ function resetEditInputStyles() {
 
                 users.push(newUser);
                 renderUsers();
-                closeModal('adduserModal');
+                closeModals('adduserModal');
                 document.getElementById('userForm').reset();
             }
             return false;
@@ -1453,11 +1453,11 @@ function resetEditInputStyles() {
                 const closeBtn = modal.querySelector('.modal-close');
                 
                 // Close button click
-                closeBtn.addEventListener('click', () => closeModal(modalId));
+                closeBtn.addEventListener('click', () => closeModals(modalId));
                 
                 // Click outside modal
                 modal.addEventListener('click', (e) => {
-                    if (e.target === modal) closeModal(modalId);
+                    if (e.target === modal) closeModals(modalId);
                 });
             });
 
@@ -1494,7 +1494,7 @@ function openModal(modalId) {
     document.body.classList.add('no-scroll'); // Disable background scrolling
 }
 
-function closeModal(modalId) {
+function closeModals(modalId) {
     document.getElementById(modalId).classList.remove('active');
     document.body.classList.remove('no-scroll'); // Enable background scrolling
 }
